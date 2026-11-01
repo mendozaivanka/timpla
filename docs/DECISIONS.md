@@ -21,3 +21,7 @@ Append-only. Newest last.
 - **2026-11-01 · Schemas live in the site.** The zod schemas in `web/src/lib/data/schemas.ts` are the data contract;
   the data run validates a new version by building the site on it. A separate `contracts/` package can come later if a
   second consumer appears (Sinturon's Barako chapter reads Timpla's release).
+- **2026-11-01 · Plain Nordic Rose and minimal maps.** The Kape't Gatas palette is retired so Timpla matches the
+  portfolio and Sinturon. Both maps now use Sinturon's style: flat land, no street basemap until zoomed in close, and
+  translucent circles with a thin outline, sized by how many cafés they group (rose for specialty, fjord blue for the
+  wider directory). The map pop-ups also lost the last fonts from the old design (DM Mono, Figtree, Newsreader).

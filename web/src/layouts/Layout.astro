@@ -7,20 +7,18 @@ import { light, dark } from "@/data/tokens";
 type Props = {
   title: string;
   description?: string;
-  /** Timpla pages use "kape" (Kape't Gatas, in global.css). Leave empty for plain Nordic Rose. */
-  palette?: "kape";
   /** Kept for TimplaLayout, which always draws its own header. */
   hideHeader?: boolean;
 };
 
-const { title, description = site.description, palette } = Astro.props;
-const themeColor = palette === "kape" ? { light: "#f7f1e9", dark: "#1a1310" } : { light: light.background, dark: dark.background };
+const { title, description = site.description } = Astro.props;
+const themeColor = { light: light.background, dark: dark.background };
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <!doctype html>
-<html lang="en" class="no-js" data-palette={palette}>
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

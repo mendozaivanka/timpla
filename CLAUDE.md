@@ -15,7 +15,7 @@ GitHub Pages at https://mendozaivanka.github.io/timpla/ by `.github/workflows/de
 - **Base path:** the site lives under `/timpla`. Internal links are written `/timpla/...`; files in `web/public/` must
   use `import.meta.env.BASE_URL`.
 - **Design system:** files from `../nordic-rose` are vendored (`npm run design:sync`), never edited here. Timpla's own
-  colours (`--pulot`, kape palette) are in `web/src/styles/global.css`.
+  colours (map tiers, `--independent`, `--harvest`) are in `web/src/styles/global.css`.
 - Astro's compiler misreads `x! / y` as a regex in `.astro` files: write `(x ?? 0) / y`.
 - **Commits and PRs carry no AI attribution** (no Co-Authored-By Claude, no "Generated with Claude Code").
 - Verify with `scripts/data-pull.sh --local` (after `pipeline/build.sh`) and `cd web && npm run build`. Commit/push only when asked.

@@ -12,7 +12,7 @@ ratings: Google and Foursquare terms forbid storing them, and every figure here 
 
 | Path | What |
 | --- | --- |
-| `web/` | The site: Astro 7, React islands, MapLibre, Nordic Rose (vendored) with Timpla's own "Kape't Gatas" palette. Served at `/timpla/` |
+| `web/` | The site: Astro 7, React islands, MapLibre, Nordic Rose (vendored), with maps drawn in the same minimal style as Sinturon. Served at `/timpla/` |
 | `pipeline/cafes/` | Café inputs: hand-curated lists in `data/*.psv`, OSM and Overture snapshots in `sources/`, Python rules in `scripts/` |
 | `pipeline/beans/` | PSA OpenSTAT pulls in `raw/`, the fetcher in `scripts/fetch_psa.py`, reported facts in `data/reported.csv` |
 | `pipeline/node/` | Turn the inputs into the read models the site reads (`build-timpla-data.ts`, `build-tanim-data.ts`) |

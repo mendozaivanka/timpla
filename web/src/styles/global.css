@@ -1,23 +1,14 @@
 /* Timpla styles. Nordic Rose comes first: it is vendored from ../nordic-rose (npm run design:sync), so edit it there.
-   Everything below is Timpla's own: the "Kape't Gatas" palette, tier dots, the receipt and the province sheet. */
+   Everything below is Timpla's own: map and tier colours, the receipt and the province sheet. */
 @import "./nordic-rose.css";
-
-/* Timpla-only colours, usable as Tailwind classes (bg-pulot, text-pulot-ink) */
-@theme inline {
-  --color-pulot: var(--pulot);
-  --color-pulot-ink: var(--pulot-ink);
-}
-:root {
-  --pulot: #c98b2b;      /* honey: one highlight at a time */
-  --pulot-ink: #7a5410;  /* honey that passes as text */
-}
 
 /* ───────── Timpla (café data-viz project) ───────── */
 :root {
-  --tier-acclaimed: #7a2a49;
-  --tier-recognised: #b04a6f;
-  --tier-indie: #b04a6f; /* drawn as a ring */
-  --harvest: #9a6a14;
+  --tier-acclaimed: #8f3a5c;
+  --tier-recognised: #c86a8c;
+  --tier-indie: #c86a8c; /* drawn as a ring */
+  --independent: #3f6178; /* fjord: the wider directory */
+  --harvest: #3f6178;
   --paper: #fffdfa;
   --paper-ink: #2b2226;
   --paper-muted: #6f6066;
@@ -27,7 +18,8 @@
   --tier-acclaimed: #f2a3bc;
   --tier-recognised: #b55f80;
   --tier-indie: #f2a3bc;
-  --harvest: #f1c77f;
+  --independent: #9cb7cb;
+  --harvest: #9cb7cb;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -61,102 +53,14 @@
     height: 0.7rem;
     border-radius: 9999px;
   }
-  .tier-dot[data-tier="acclaimed"] { background: var(--tier-acclaimed); }
-  .tier-dot[data-tier="recognised"] { background: var(--tier-recognised); }
-  .tier-dot[data-tier="indie"] { border: 2px solid var(--tier-indie); background: transparent; }
-  /* The wider directory (no specialty check): muted, so specialty tiers stay the loudest marks */
-  .tier-dot[data-tier="independent"] { border: 1.5px solid var(--muted-foreground); background: transparent; }
-  .tier-dot[data-tier="multibranch"] { border: 1.5px solid var(--muted-foreground); background: radial-gradient(var(--muted-foreground) 35%, transparent 40%); }
-}
-
-/* ───────── Timpla palette: "Kape't Gatas" (coffee with milk) ─────────
-   Applied only where <html data-palette="kape"> (the Timpla pages); the portfolio keeps Tala Rosa.
-   Selectors are more specific than the generated tokens so they win in every theme mode. */
-html[data-palette="kape"] {
-  --background: #f7f1e9;   /* Gatas */
-  --foreground: #2b1d16;   /* Kape */
-  --card: #fffdf9;
-  --card-foreground: #2b1d16;
-  --popover: #fffdf9;
-  --popover-foreground: #2b1d16;
-  --primary: #e8c9a9;      /* Krema */
-  --primary-foreground: #3a2416;
-  --primary-strong: #8b4a26; /* Tostado */
-  --secondary: #efe4d6;
-  --secondary-foreground: #3a2416;
-  --muted: #efe6db;
-  --muted-foreground: #6e5b4e;
-  --accent: #efe6db;
-  --accent-foreground: #2b1d16;
-  --border: #e8ddd0;
-  --input: #a08672;
-  --ring: #8b4a26;
-  --rosas-1: #f4e9dc; --rosas-2: #e8c9a9; --rosas-3: #d6a77e; --rosas-4: #b9774c; --rosas-5: #8b4a26;
-  --pulot: #c98b2b;         /* Pulot */
-  --pulot-ink: #7a5410;
-  --heather: #e8c9a9;
-  --tier-acclaimed: #3b2016; /* Barako */
-  --tier-recognised: #8b4a26;
-  --tier-indie: #8b4a26;
-  --harvest: #3f6e85;      /* slate: clearly apart from the roast brown */
-}
-html[data-palette="kape"][data-theme="dark"] {
-  --background: #1a1310;   /* Gabi */
-  --foreground: #f3e9df;
-  --card: #241b16;
-  --card-foreground: #f3e9df;
-  --popover: #241b16;
-  --popover-foreground: #f3e9df;
-  --primary: #d9b08a;
-  --primary-foreground: #1a1310;
-  --primary-strong: #e2a47a;
-  --secondary: #2f241e;
-  --secondary-foreground: #f3e9df;
-  --muted: #2b211b;
-  --muted-foreground: #bba795;
-  --accent: #2f241e;
-  --accent-foreground: #f3e9df;
-  --border: #3a2d25;
-  --input: #8a7462;
-  --ring: #e2a47a;
-  --rosas-1: #2b211b; --rosas-2: #4a3426; --rosas-3: #7a5236; --rosas-4: #b9774c; --rosas-5: #e2a47a;
-  --pulot: #e0a94a;
-  --pulot-ink: #e8c27a;
-  --heather: #4a3426;
-  --tier-acclaimed: #f0c9a4;
-  --tier-recognised: #b9774c;
-  --tier-indie: #f0c9a4;
-  --harvest: #8fb8cc;
-}
-@media (prefers-color-scheme: dark) {
-  html[data-palette="kape"]:not([data-theme="light"]) {
-    --background: #1a1310;
-    --foreground: #f3e9df;
-    --card: #241b16;
-    --card-foreground: #f3e9df;
-    --popover: #241b16;
-    --popover-foreground: #f3e9df;
-    --primary: #d9b08a;
-    --primary-foreground: #1a1310;
-    --primary-strong: #e2a47a;
-    --secondary: #2f241e;
-    --secondary-foreground: #f3e9df;
-    --muted: #2b211b;
-    --muted-foreground: #bba795;
-    --accent: #2f241e;
-    --accent-foreground: #f3e9df;
-    --border: #3a2d25;
-    --input: #8a7462;
-    --ring: #e2a47a;
-    --rosas-1: #2b211b; --rosas-2: #4a3426; --rosas-3: #7a5236; --rosas-4: #b9774c; --rosas-5: #e2a47a;
-    --pulot: #e0a94a;
-    --pulot-ink: #e8c27a;
-    --heather: #4a3426;
-    --tier-acclaimed: #f0c9a4;
-    --tier-recognised: #b9774c;
-    --tier-indie: #f0c9a4;
-    --harvest: #8fb8cc;
-  }
+  /* Translucent circles with a thin outline, the same marks the maps draw */
+  .tier-dot { --c: var(--muted-foreground); border: 1px solid var(--c); background: color-mix(in srgb, var(--c) 35%, transparent); }
+  .tier-dot[data-tier="acclaimed"] { --c: var(--tier-acclaimed); }
+  .tier-dot[data-tier="recognised"] { --c: var(--tier-recognised); }
+  .tier-dot[data-tier="indie"] { --c: var(--tier-indie); background: transparent; border-width: 2px; }
+  /* The wider directory (no specialty check) */
+  .tier-dot[data-tier="independent"] { --c: var(--independent); }
+  .tier-dot[data-tier="multibranch"] { --c: var(--muted-foreground); }
 }
 
 /* ───────── Tanim: the province receipt sheet ───────── */

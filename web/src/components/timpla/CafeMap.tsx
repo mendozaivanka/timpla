@@ -12,16 +12,20 @@ import { cn } from "@/lib/utils";
 
 setWorkerUrl(workerUrl);
 
-/* Basemap: OpenFreeMap (free, no API key), tinted towards the Kape't Gatas palette. */
+/* Basemap: OpenFreeMap (free, no API key), stripped back to match Sinturon's maps: flat land and water, with roads
+   and place names only once you zoom in close. Cafés are translucent circles with a thin outline. */
 const STYLE = { light: "https://tiles.openfreemap.org/styles/positron", dark: "https://tiles.openfreemap.org/styles/dark" };
 const TINT = {
-  light: { background: "#f7f1e9", water: "#dde6ea", park: "#e7ebdf", building: "#efe5d9" },
-  dark: { background: "#1a1310", water: "#1c252b", park: "#1f231b", building: "#261d17" },
+  light: { land: "#e9edf1", water: "#ffffff" },
+  dark: { land: "#18202a", water: "#10151b" },
 };
 const TIER = {
-  light: { acclaimed: "#3b2016", recognised: "#8b4a26", indie: "#8b4a26", ring: "#ffffff", muted: "#6e5b4e", cluster: "#e8c9a9", faint: "#a8958a" },
-  dark: { acclaimed: "#f0c9a4", recognised: "#b9774c", indie: "#f0c9a4", ring: "#1a1310", muted: "#bba795", cluster: "#4a3426", faint: "#6f6158" },
+  light: { acclaimed: "#8f3a5c", recognised: "#c86a8c", indie: "#c86a8c", independent: "#3f6178", multibranch: "#525c68", faint: "#9aa5b2" },
+  dark: { acclaimed: "#f2a3bc", recognised: "#b55f80", indie: "#f2a3bc", independent: "#9cb7cb", multibranch: "#9aa5b2", faint: "#6c7887" },
 };
+/** Zoom at which streets, place names and café names appear, and clusters split into single cafés. */
+const DETAIL_ZOOM = 13.5;
+const FILL = 0.35;
 
 export type MapPoint = {
   slug: string; name: string; branch: string; tier: "acclaimed" | "recognised" | "indie";
@@ -45,15 +49,15 @@ const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 const shortLabel = (name: string) => name.replace(/\s*\(.*?\)\s*/g, " ").trim();
 
 const row = (k: string, v: string) =>
-  v ? `<div style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6f6066">${k}</span><span style="text-align:right">${esc(v)}</span></div>` : "";
-const RULE = `<div style="border-top:1.5px dashed #d9cfd2;margin:6px 0"></div>`;
+  v ? `<div style="display:flex;justify-content:space-between;gap:12px"><span style="color:#525c68">${k}</span><span style="text-align:right">${esc(v)}</span></div>` : "";
+const RULE = `<div style="border-top:1px solid #dde2e8;margin:6px 0"></div>`;
 const card = (title: string, sub: string, rows: string, link: string) =>
-  `<div style="font:13px/1.5 'DM Mono',monospace;color:#2b2226;min-width:200px">` +
-  `<div style="font:500 18px/1.2 Newsreader,serif;margin-bottom:2px">${esc(title)}</div>` +
-  (sub ? `<div style="font:13px Figtree,sans-serif;color:#6f6066">${esc(sub)}</div>` : "") +
+  `<div style="font:12px/1.55 'Red Hat Mono Variable','Red Hat Mono',monospace;color:#18202b;min-width:200px">` +
+  `<div style="font:600 16px/1.25 'Manrope Variable',Manrope,sans-serif;margin-bottom:2px">${esc(title)}</div>` +
+  (sub ? `<div style="font:13px 'Manrope Variable',Manrope,sans-serif;color:#525c68">${esc(sub)}</div>` : "") +
   RULE + rows + (link ? RULE + link : "") + `</div>`;
 const linkHtml = (href: string, text: string, external: boolean) =>
-  `<a href="${esc(href)}"${external ? ' target="_blank" rel="noopener"' : ""} style="font:600 14px Figtree,sans-serif;color:#8b4a26">${esc(text)}</a>`;
+  `<a href="${esc(href)}"${external ? ' target="_blank" rel="noopener"' : ""} style="font:600 13px 'Manrope Variable',Manrope,sans-serif;color:#8f3a5c">${esc(text)}</a>`;
 
 /** Details card: on hover (no link) and on click/tap (with the link). */
 function specialtyCard(p: MapPoint, withLink: boolean) {
@@ -70,8 +74,8 @@ function placeCard(members: MapPoint[], withLink: boolean) {
   const where = [members[0].nb, members[0].city].filter((x, i, a) => x && a.indexOf(x) === i).join(", ");
   const items = members.map((p) =>
     `<div style="margin:6px 0">` +
-    `<div style="font:500 16px/1.2 Newsreader,serif">${esc(p.name)}</div>` +
-    `<div style="color:#6f6066">${esc([p.since && `since ${p.since}`, `specialty · ${p.tier}`].filter(Boolean).join(" · "))}</div>` +
+    `<div style="font:600 14px/1.25 'Manrope Variable',Manrope,sans-serif">${esc(p.name)}</div>` +
+    `<div style="color:#525c68">${esc([p.since && `since ${p.since}`, `specialty · ${p.tier}`].filter(Boolean).join(" · "))}</div>` +
     (withLink ? linkHtml(`/timpla/cafes/${p.slug}/`, "Open the receipt →", false) : "") +
     `</div>`).join("");
   return card(`${members.length} cafés here`, where, items, "");
@@ -156,16 +160,24 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
       map.on("load", () => {
         const m = map!;
         const t = TINT[scheme];
-        for (const [layer, prop, value] of [
-          ["background", "background-color", t.background],
-          ["water", "fill-color", t.water],
-          ["park", "fill-color", t.park],
-          ["building", "fill-color", t.building],
-        ] as const) if (m.getLayer(layer)) m.setPaintProperty(layer, prop, value);
+        // Flatten the basemap: one land colour, one water colour; roads and labels wait for DETAIL_ZOOM
+        for (const layer of m.getStyle().layers) {
+          const id = layer.id;
+          if (layer.type === "background") m.setPaintProperty(id, "background-color", t.land);
+          else if (layer.type === "fill") {
+            if (/water/.test(id)) m.setPaintProperty(id, "fill-color", t.water);
+            else if (/building/.test(id)) m.setLayerZoomRange(id, 15, 24);
+            else m.setLayoutProperty(id, "visibility", "none"); // parks, landuse, landcover
+          } else if (layer.type === "line" || layer.type === "symbol") {
+            m.setLayerZoomRange(id, DETAIL_ZOOM, 24);
+          }
+        }
 
         const c = TIER[scheme];
-        const ink = scheme === "dark" ? "#f3e9df" : "#2b1d16";
-        const halo = scheme === "dark" ? "#1a1310" : "#fffdf9";
+        const ink = scheme === "dark" ? "#e9eef3" : "#18202b";
+        const halo = scheme === "dark" ? "#10151b" : "#ffffff";
+        // Circle area grows with the number of cafés it stands for
+        const sized = (base: number): ExpressionSpecification => ["+", base, ["*", 3.2, ["sqrt", ["get", "point_count"]]]];
         const labelLayout = {
           "text-font": ["Noto Sans Regular"],
           // Try right first, then the other sides, so two close dots can both keep a name
@@ -186,58 +198,72 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
         });
         m.addLayer({
           id: "unverified", type: "circle", source: "unverified",
-          paint: { "circle-radius": 2.5, "circle-color": c.faint, "circle-opacity": 0.7 },
+          paint: { "circle-radius": 2.2, "circle-color": c.faint, "circle-opacity": 0.6 },
         });
 
         // 2. Independent and multi-branch cafés, clustered until street level so the specialty dots stay readable
-        m.addSource("others", { type: "geojson", data: othersData(others, state.current.kind), cluster: true, clusterRadius: 40, clusterMaxZoom: 13 });
+        m.addSource("others", {
+          type: "geojson", data: othersData(others, state.current.kind), cluster: true, clusterRadius: 28, clusterMaxZoom: DETAIL_ZOOM - 0.5,
+          clusterProperties: { multi: ["+", ["case", ["==", ["get", "cls"], "multibranch"], 1, 0]] },
+        });
+        const othersColor: ExpressionSpecification = ["case", ["has", "point_count"],
+          ["case", [">", ["*", 2, ["get", "multi"]], ["get", "point_count"]], c.multibranch, c.independent],
+          ["match", ["get", "cls"], "multibranch", c.multibranch, c.independent]];
         m.addLayer({
           id: "others-clusters", type: "circle", source: "others", filter: ["has", "point_count"],
           paint: {
-            "circle-color": c.cluster,
-            "circle-opacity": 0.85,
-            "circle-radius": ["step", ["get", "point_count"], 11, 10, 14, 40, 18],
-            "circle-stroke-color": c.muted,
-            "circle-stroke-width": 1,
+            "circle-color": othersColor, "circle-opacity": FILL,
+            "circle-radius": sized(2),
+            "circle-stroke-color": othersColor, "circle-stroke-width": 1, "circle-stroke-opacity": 0.9,
           },
-        });
-        m.addLayer({
-          id: "others-count", type: "symbol", source: "others", filter: ["has", "point_count"],
-          layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Regular"], "text-size": 11, "text-allow-overlap": true },
-          paint: { "text-color": ink },
         });
         m.addLayer({
           id: "others", type: "circle", source: "others", filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 15, 6],
-            "circle-color": ["match", ["get", "cls"], "multibranch", c.muted, c.ring],
-            "circle-stroke-color": c.muted,
-            "circle-stroke-width": 1.5,
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3.5, 15, 6],
+            "circle-color": othersColor, "circle-opacity": FILL,
+            "circle-stroke-color": othersColor, "circle-stroke-width": 1, "circle-stroke-opacity": 0.9,
           },
         });
         m.addLayer({
           id: "others-labels", type: "symbol", source: "others", minzoom: 14, filter: ["!", ["has", "point_count"]],
           layout: { ...labelLayout, "text-field": ["get", "label"], "text-size": 12, "symbol-sort-key": 3 },
-          paint: { "text-color": c.muted, "text-halo-color": halo, "text-halo-width": 1.6 },
+          paint: { "text-color": c.multibranch, "text-halo-color": halo, "text-halo-width": 1.6 },
         });
 
-        // 3. Specialty cafés on top, never clustered, with their names beside the dots
+        // 3. Specialty cafés on top: grouped into sized circles when zoomed out, single cafés with names up close.
+        //    A group takes the acclaimed colour when most of its cafés are acclaimed.
         m.addSource("cafes", {
           type: "geojson",
           data: { type: "FeatureCollection", features: groupByPlace(points) },
+          cluster: true, clusterRadius: 28, clusterMaxZoom: DETAIL_ZOOM - 0.5,
+          clusterProperties: { acclaimed: ["+", ["case", ["==", ["get", "tier"], "acclaimed"], 1, 0]] },
         });
+        const cafeColor: ExpressionSpecification = ["case", ["has", "point_count"],
+          ["case", [">=", ["*", 2, ["get", "acclaimed"]], ["get", "point_count"]], c.acclaimed, c.recognised],
+          ["match", ["get", "tier"], "acclaimed", c.acclaimed, "recognised", c.recognised, c.indie]];
         m.addLayer({
-          id: "cafes", type: "circle", source: "cafes",
+          id: "cafe-clusters", type: "circle", source: "cafes", filter: ["has", "point_count"],
           paint: {
-            "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 4, 15, 8],
-            "circle-color": ["match", ["get", "tier"], "acclaimed", c.acclaimed, "recognised", c.recognised, c.ring],
-            "circle-stroke-color": ["match", ["get", "tier"], "indie", c.indie, c.ring],
-            "circle-stroke-width": ["match", ["get", "tier"], "indie", 2.2, 1.5],
+            "circle-color": cafeColor, "circle-opacity": FILL,
+            "circle-radius": sized(2),
+            "circle-stroke-color": cafeColor, "circle-stroke-width": 1, "circle-stroke-opacity": 0.9,
           },
         });
-        // MapLibre hides labels that would collide, so more appear as you zoom in; acclaimed cafés get first claim.
         m.addLayer({
-          id: "cafe-labels", type: "symbol", source: "cafes",
+          id: "cafes", type: "circle", source: "cafes", filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 4.5, 15, 8],
+            "circle-color": cafeColor,
+            "circle-opacity": ["match", ["get", "tier"], "indie", 0, FILL],
+            "circle-stroke-color": cafeColor,
+            "circle-stroke-width": ["match", ["get", "tier"], "indie", 2, 1],
+            "circle-stroke-opacity": 0.9,
+          },
+        });
+        // Names only once the circles have split; MapLibre hides labels that would collide, acclaimed cafés first.
+        m.addLayer({
+          id: "cafe-labels", type: "symbol", source: "cafes", filter: ["!", ["has", "point_count"]], minzoom: DETAIL_ZOOM - 0.5,
           layout: {
             ...labelLayout,
             "text-field": ["get", "label"],
@@ -246,7 +272,7 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
           },
           paint: { "text-color": ink, "text-halo-color": halo, "text-halo-width": 1.6 },
         });
-        applyFilters(m, state.current, others);
+        applyFilters(m, state.current, others, points);
         if (!center) {
           const b = new LngLatBounds();
           points.forEach((p) => b.extend([p.lon, p.lat]));
@@ -281,15 +307,17 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
             });
           }
         }
-        // A cluster zooms in to the level where it splits
-        m.on("click", "others-clusters", async (e) => {
-          const f = e.features?.[0];
-          if (!f) return;
-          const zoomTo = await (m.getSource("others") as GeoJSONSource).getClusterExpansionZoom(f.properties.cluster_id);
-          m.easeTo({ center: coordsOf(f), zoom: zoomTo, duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400 });
-        });
-        m.on("mouseenter", "others-clusters", () => (m.getCanvas().style.cursor = "pointer"));
-        m.on("mouseleave", "others-clusters", () => (m.getCanvas().style.cursor = ""));
+        // A group zooms in to the level where it splits
+        for (const [layer, source] of [["others-clusters", "others"], ["cafe-clusters", "cafes"]] as const) {
+          m.on("click", layer, async (e) => {
+            const f = e.features?.[0];
+            if (!f) return;
+            const zoomTo = await (m.getSource(source) as GeoJSONSource).getClusterExpansionZoom(f.properties.cluster_id);
+            m.easeTo({ center: coordsOf(f), zoom: zoomTo, duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400 });
+          });
+          m.on("mouseenter", layer, () => (m.getCanvas().style.cursor = "pointer"));
+          m.on("mouseleave", layer, () => (m.getCanvas().style.cursor = ""));
+        }
       });
     };
 
@@ -305,8 +333,8 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
   // Filters: setFilter / setData, no rebuild of the map
   useEffect(() => {
     const m = mapRef.current;
-    if (m?.getLayer("cafes")) applyFilters(m, { kind, tier, showUnverified }, others);
-  }, [kind, tier, showUnverified, others]);
+    if (m?.getLayer("cafes")) applyFilters(m, { kind, tier, showUnverified }, others, points);
+  }, [kind, tier, showUnverified, others, points]);
 
   const nSpecialty = kind === "all" || kind === "specialty" ? (tier === "all" ? points.length : points.filter((p) => p.tier === tier).length) : 0;
   const nOthers = kind === "specialty" ? 0 : others.filter((o) => kind === "all" || o.cls === kind).length;
@@ -361,9 +389,11 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
         )}
       </div>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-muted-foreground">
-        <span className="inline-flex items-center gap-1.5"><span className="tier-dot" data-tier="acclaimed" />specialty (by tier)</span>
+        <span className="inline-flex items-center gap-1.5"><span className="tier-dot" data-tier="acclaimed" />acclaimed</span>
+        <span className="inline-flex items-center gap-1.5"><span className="tier-dot" data-tier="recognised" />recognised</span>
         <span className="inline-flex items-center gap-1.5"><span className="tier-dot" data-tier="independent" />independent</span>
         <span className="inline-flex items-center gap-1.5"><span className="tier-dot" data-tier="multibranch" />multi-branch</span>
+        <span>bigger circle = more cafés</span>
         <label className="inline-flex min-h-11 cursor-pointer items-center gap-2">
           <input type="checkbox" checked={showUnverified} onChange={(e) => setShowUnverified(e.target.checked)} className="size-4 accent-[var(--primary-strong)]" />
           Show {unverified.length} unverified OSM cafés
@@ -372,7 +402,7 @@ export default function CafeMap({ points, others, unverified, embed = false }: {
       </div>
       <div
         ref={box}
-        className="h-[min(70dvh,640px)] min-h-[380px] overflow-hidden rounded-2xl border border-border bg-muted"
+        className="h-[min(70dvh,640px)] min-h-[380px] overflow-hidden rounded-2xl border border-border bg-card"
         role="region"
         aria-label="Interactive map of independent cafés. The café directory has the same places as a list."
       />
@@ -388,14 +418,12 @@ function othersData(others: OtherPoint[], kind: Kind): Extract<GeoJSONSourceSpec
   };
 }
 
-function applyFilters(m: MapLibreMap, s: { kind: Kind; tier: TierFilter; showUnverified: boolean }, others: OtherPoint[]) {
+function applyFilters(m: MapLibreMap, s: { kind: Kind; tier: TierFilter; showUnverified: boolean }, others: OtherPoint[], points: MapPoint[]) {
   const specialtyOn = s.kind === "all" || s.kind === "specialty";
-  // A shared dot shows when any café on it matches the tier
-  const tierFilter: ExpressionSpecification | null = s.tier === "all" || s.kind !== "specialty" ? null : ["in", s.tier, ["get", "tiers"]];
-  for (const id of ["cafes", "cafe-labels"]) {
-    m.setLayoutProperty(id, "visibility", specialtyOn ? "visible" : "none");
-    m.setFilter(id, tierFilter);
-  }
+  for (const id of ["cafes", "cafe-labels", "cafe-clusters"]) m.setLayoutProperty(id, "visibility", specialtyOn ? "visible" : "none");
+  // Groups are computed from the source data, so the tier filter swaps the data too
+  const byTier = s.tier === "all" || s.kind !== "specialty" ? points : points.filter((p) => p.tier === s.tier);
+  (m.getSource("cafes") as GeoJSONSource).setData({ type: "FeatureCollection", features: groupByPlace(byTier) });
   // Clusters are computed from the source data, so the kind filter swaps the data rather than filtering layers
   (m.getSource("others") as GeoJSONSource).setData(othersData(others, s.kind));
   m.setLayoutProperty("unverified", "visibility", s.showUnverified ? "visible" : "none");
