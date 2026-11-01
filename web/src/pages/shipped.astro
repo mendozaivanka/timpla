@@ -24,14 +24,14 @@ const trend = years.map((yr) => { const t = Object.values(imports[yr].byForm).re
   <section class="grid gap-5 pt-10">
     <div>
       <span class="label-mono">Shipped in · PSA imports by country of origin · {years[0]}–{y}</span>
-      <h1 class="mt-1 max-w-[24ch] font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-normal tracking-tight text-balance">Beans from {beansFrom}, roasted coffee via {roastedFrom}.</h1>
+      <h1 class="mt-1 max-w-[24ch] font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-bold tracking-[-0.035em] text-balance">Beans from {beansFrom}, roasted coffee via {roastedFrom}.</h1>
       <p class="mt-3 max-w-[64ch] text-muted-foreground">In {y} the Philippines imported {fmt(kg / 1000)} tonnes of coffee beans and extracts worth USD {fmt(usd / 1e6)} million, counted at the border by tariff line and country. Which country supplies it depends on the form: green beans, roasted beans, or the extracts used for instant coffee. 3-in-1 sachets are left out; they are mostly sugar and creamer.</p>
     </div>
     <dl class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">USD {fmt(usd / 1e6)} M</dd><dt class="label-mono mt-1">paid at the border, {y}</dt></div>
-      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{fmt(kg / 1000)} t</dd><dt class="label-mono mt-1">product weight</dt></div>
-      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{Math.round((origins[0][1].usd / usd) * 100)} %</dd><dt class="label-mono mt-1">of value from {origins[0][0]}</dt></div>
-      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{origins.length}</dd><dt class="label-mono mt-1">origin countries</dt></div>
+      <div><dd class="m-0 font-heading font-bold tracking-tight text-3xl leading-none tabular-nums">USD {fmt(usd / 1e6)} M</dd><dt class="label-mono mt-1">paid at the border, {y}</dt></div>
+      <div><dd class="m-0 font-heading font-bold tracking-tight text-3xl leading-none tabular-nums">{fmt(kg / 1000)} t</dd><dt class="label-mono mt-1">product weight</dt></div>
+      <div><dd class="m-0 font-heading font-bold tracking-tight text-3xl leading-none tabular-nums">{Math.round((origins[0][1].usd / usd) * 100)} %</dd><dt class="label-mono mt-1">of value from {origins[0][0]}</dt></div>
+      <div><dd class="m-0 font-heading font-bold tracking-tight text-3xl leading-none tabular-nums">{origins.length}</dd><dt class="label-mono mt-1">origin countries</dt></div>
     </dl>
     <div class="rounded-2xl border border-border bg-card p-5">
       <Sankey layout={imp.sankey} />

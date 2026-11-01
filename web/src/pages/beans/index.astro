@@ -18,14 +18,14 @@ const topShare = top && nat ? (top.production.all[y] ?? 0) / nat : 0;
     <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
         <span class="label-mono">Where the beans come from · PSA OpenSTAT · {meta.years[0]}–{y}</span>
-        <h1 class="mt-1 max-w-[22ch] font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-normal tracking-tight text-balance">
-          Benguet is on every menu. <em class="text-primary-strong italic">{top?.name}</em> grows the coffee.
+        <h1 class="mt-1 max-w-[22ch] font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-bold tracking-[-0.035em] text-balance">
+          Benguet is on every menu. <em class="text-primary-strong not-italic">{top?.name}</em> grows the coffee.
         </h1>
       </div>
       <dl class="grid grid-cols-3 gap-4">
-        <div><dd class="m-0 font-heading text-4xl leading-none tabular-nums">{fmt(nat)} t</dd><dt class="label-mono mt-1">green coffee, {y}</dt></div>
-        <div><dd class="m-0 font-heading text-4xl leading-none tabular-nums">{meta.reporting}</dd><dt class="label-mono mt-1">provinces reporting</dt></div>
-        <div><dd class="m-0 font-heading text-4xl leading-none tabular-nums">{Math.round(topShare * 100)} %</dd><dt class="label-mono mt-1">from {top?.name}</dt></div>
+        <div><dd class="m-0 font-heading font-bold tracking-tight text-4xl leading-none tabular-nums">{fmt(nat)} t</dd><dt class="label-mono mt-1">green coffee, {y}</dt></div>
+        <div><dd class="m-0 font-heading font-bold tracking-tight text-4xl leading-none tabular-nums">{meta.reporting}</dd><dt class="label-mono mt-1">provinces reporting</dt></div>
+        <div><dd class="m-0 font-heading font-bold tracking-tight text-4xl leading-none tabular-nums">{Math.round(topShare * 100)} %</dd><dt class="label-mono mt-1">from {top?.name}</dt></div>
       </dl>
     </div>
     <p class="max-w-[64ch] text-muted-foreground">

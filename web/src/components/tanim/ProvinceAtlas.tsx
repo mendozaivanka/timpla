@@ -146,7 +146,7 @@ export default function ProvinceAtlas({ src, initial }: { src: string; initial?:
                   <div className="flex items-center justify-between gap-2"><span className="label-mono">Province receipt</span><button type="button" aria-label="Close the receipt" onClick={() => setSelected(null)} className="size-8 rounded-full border border-border text-muted-foreground">×</button></div>
                   <div className="receipt-shadow"><div className="receipt rounded-t-md px-5 pt-4 font-mono text-[12.5px] leading-relaxed">
                     <div className="flex justify-between text-[10px] tracking-[0.18em] [color:var(--paper-muted)]"><span>TANIM · {sel.region.toUpperCase()}</span><span>{year}</span></div>
-                    <div className="my-2 font-heading text-[24px] leading-tight">{sel.name} <span className="font-sans text-xs [color:var(--paper-muted)]">province</span></div>
+                    <div className="my-2 font-heading font-semibold text-[24px] leading-tight">{sel.name} <span className="font-sans text-xs [color:var(--paper-muted)]">province</span></div>
                     <div className="receipt-rule"></div>
                     <dl className="m-0 my-2 grid gap-0.5">
                       {([

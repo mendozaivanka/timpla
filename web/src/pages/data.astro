@@ -25,14 +25,14 @@ const sources = [
   <article class="grid max-w-3xl gap-10 pt-10 text-[17px] leading-relaxed">
     <header>
       <span class="label-mono">Methods</span>
-      <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">About the data</h1>
+      <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-bold tracking-[-0.035em]">About the data</h1>
       <p class="mt-3 text-muted-foreground">
         Built {meta.builtAt}. {d.shops} cafés ({d.branches} branches) are in the directory; {meta.shops} of them ({meta.branches} branches) are verified specialty.
       </p>
     </header>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Who's in</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Who's in</h2>
       <p>A café is in the directory when all four of these hold:</p>
       <ol class="grid gap-2 pl-5">
         <li><strong>It's in Metro Manila.</strong> Checked against city boundaries. BGC is labelled Taguig, following the 2022 Supreme Court ruling, even where older boundary files still draw it inside Makati.</li>
@@ -48,7 +48,7 @@ const sources = [
     </section>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Specialty is a badge</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Specialty is a badge</h2>
       <p>On top of the directory, a café is marked specialty when it roasts its own beans, names a specialty roaster or origin, brews by method, or appears on a roaster's stockist list or a coffee-festival lineup, and its 2025–26 status was checked by hand. Specialty cafés get a receipt page.</p>
       <dl class="mt-3 grid gap-3">
         {
@@ -66,7 +66,7 @@ const sources = [
     </section>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">How we know it's open</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">How we know it's open</h2>
       <table class="mt-3 w-full border-collapse text-[15px]">
         <thead><tr class="border-b border-border text-left"><th class="py-2 font-semibold">Evidence, strongest first</th><th class="py-2 text-right font-semibold">Branches</th></tr></thead>
         <tbody>
@@ -79,7 +79,7 @@ const sources = [
     </section>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Specialty tiers measure press, not quality</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Specialty tiers measure press, not quality</h2>
       <dl class="mt-3 grid gap-3">
         {
           (["acclaimed", "recognised", "indie"] as const).map((t) => (
@@ -97,7 +97,7 @@ const sources = [
     </section>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Known gaps</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Known gaps</h2>
       <ul class="grid gap-2 pl-5 text-muted-foreground">
         <li>Many small cafés exist only on Instagram, which we don't collect from, so the directory and the indie tier are undercounted.</li>
         <li>OpenStreetMap is densest where its mappers live (Makati, Quezon City, Pasig); fewer cafés in the north of the metro partly means fewer mappers.</li>
@@ -108,7 +108,7 @@ const sources = [
     </section>
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Sources and credits</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Sources and credits</h2>
       <ul class="m-0 mt-3 grid list-none gap-3 p-0">
         {
           sources.map(([name, text, url]) => (
@@ -124,7 +124,7 @@ const sources = [
     <BeansFinePrint />
 
     <section>
-      <h2 class="font-heading text-3xl font-normal">Spot a mistake?</h2>
+      <h2 class="font-heading text-3xl font-bold tracking-[-0.025em]">Spot a mistake?</h2>
       <p class="text-muted-foreground">Closed café, wrong address, a place we missed? <a href="mailto:mendozaivanka@gmail.com?subject=Timpla%20correction" class="font-medium text-primary-strong underline underline-offset-4">Email a correction</a> with a link as evidence.</p>
     </section>
   </article>

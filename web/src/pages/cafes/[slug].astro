@@ -47,7 +47,7 @@ const jsonLd = {
     <div class="flex flex-[2_1_420px] flex-col gap-8">
       <div>
         <span class="label-mono">{shop.type || "café"}{shop.ownership === "foreign brand" ? " · foreign brand" : ""}</span>
-        <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">{shop.name}</h1>
+        <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-bold tracking-[-0.035em]">{shop.name}</h1>
         <p class="mt-2 flex items-center gap-2 text-muted-foreground">
           <span class="tier-dot" data-tier={shop.tier}></span>
           <span><span class="font-semibold text-foreground capitalize">{shop.tier}</span>: {TIER_TEXT[shop.tier]}</span>

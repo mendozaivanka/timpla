@@ -14,7 +14,7 @@ const rows = [
 <Tag href={href} class="receipt-shadow block outline-none focus-visible:ring-3 focus-visible:ring-ring/50">
   <div class:list={["receipt rounded-t-md px-5 pt-5 font-mono leading-relaxed", large ? "text-[13px]" : "text-[12.5px]"]}>
     <div class="text-center text-[11px] tracking-[0.2em] [color:var(--paper-muted)]">TIMPLA · NO. {String(no).padStart(3, "0")}</div>
-    <div class:list={["my-2 text-center font-heading leading-tight", large ? "text-3xl" : "text-[22px]"]}>{name}</div>
+    <div class:list={["my-2 text-center font-heading font-semibold leading-tight", large ? "text-3xl" : "text-[22px]"]}>{name}</div>
     <div class="receipt-rule"></div>
     <dl class="m-0 my-2 grid gap-0.5">
       {

@@ -22,7 +22,7 @@ const stops = picks.map((p, i) => ({ ...p, i: i + 1, prov: provinces.find((q) =>
   <section class="flex flex-wrap items-center gap-10 pt-10">
     <div class="flex flex-[1_1_360px] flex-col gap-4">
       <span class="label-mono">Timpla · Beans · {y}</span>
-      <h1 class="font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-normal tracking-tight text-balance">Six coffee provinces, counted</h1>
+      <h1 class="font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-bold tracking-[-0.035em] text-balance">Six coffee provinces, counted</h1>
       <p class="max-w-[48ch] text-lg leading-relaxed text-muted-foreground">Each with PSA's own figure for {y} and one thing worth knowing. Tap a card to open the province receipt: varieties, hectares, trees, farmgate prices, and what people have reported from its towns.</p>
     </div>
     <figure class="m-0 flex flex-[1_1_320px] justify-center rounded-2xl border border-border bg-card p-5">
@@ -37,7 +37,7 @@ const stops = picks.map((p, i) => ({ ...p, i: i + 1, prov: provinces.find((q) =>
       <a href={"/timpla/beans/#p=" + s.prov.psgc + "&y=" + y} class="grid content-start gap-2 rounded-2xl border border-border bg-card p-5 transition-colors hover:bg-muted">
         <span class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-primary-strong font-mono text-[11px] text-card">{s.i}</span><span class="font-heading text-2xl">{s.name}</span></span>
         <span class="text-[13px] text-muted-foreground">{s.prov.region} · {s.kind}</span>
-        <span class="flex items-baseline gap-2"><span class="font-heading text-3xl tabular-nums">{fmt(s.prov.production.all[y])} t</span><span class="rounded-full border border-border px-2 py-0.5 text-[11.5px]">Counted · PSA {y}</span></span>
+        <span class="flex items-baseline gap-2"><span class="font-heading font-bold tracking-tight text-3xl tabular-nums">{fmt(s.prov.production.all[y])} t</span><span class="rounded-full border border-border px-2 py-0.5 text-[11.5px]">Counted · PSA {y}</span></span>
         <span class="text-[13px] leading-relaxed">{s.note}{s.said ? ". Reported: " + s.said.text : ""}</span>
         <span class="text-[13px] font-semibold text-primary-strong">Open the receipt →</span>
       </a>

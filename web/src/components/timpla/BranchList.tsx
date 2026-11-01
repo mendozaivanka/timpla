@@ -140,7 +140,7 @@ export default function BranchList({ rows, limit, full = false }: Props) {
               >
                 <span className="tier-dot" data-tier={r.tier ?? r.cls} title={r.tier ?? r.cls} />
                 <span className="min-w-0 flex-1">
-                  <span className="block font-heading text-[19px] leading-snug">
+                  <span className="block font-heading font-semibold text-[19px] leading-snug">
                     {r.name}
                     {r.branch && <span className="text-muted-foreground"> · {r.branch}</span>}
                   </span>
