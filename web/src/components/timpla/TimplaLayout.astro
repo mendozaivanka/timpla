@@ -1,0 +1,67 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ThemeMenu from "@/components/ThemeMenu";
+import { getTimplaMeta } from "@/lib/data";
+
+type Props = { title: string; description?: string; current?: "home" | "map" | "cafes" | "beans" | "shipped" | "data" };
+const { title, description, current } = Astro.props;
+const meta = await getTimplaMeta();
+
+const links = [
+  { id: "home", label: "Overview", href: "/timpla/" },
+  { id: "map", label: "Map", href: "/timpla/map/" },
+  { id: "cafes", label: "Cafés", href: "/timpla/cafes/" },
+  { id: "beans", label: "Beans", href: "/timpla/beans/" },
+  { id: "shipped", label: "Shipped in", href: "/timpla/shipped/" },
+  { id: "data", label: "About the data", href: "/timpla/data/" },
+];
+---
+
+<Layout
+  hideHeader
+  palette="kape"
+  title={`${title} · Timpla`}
+  description={description ??
+    `Timpla maps ${meta.directory.shops} independent cafés in Metro Manila, ${meta.shops} of them specialty: who roasts for whom, where the beans grow, and when each place opened.`}
+>
+  <!-- Timpla's own header replaces the portfolio header on every Timpla page -->
+  <header class="horizon flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-border pt-5 pb-4 print:hidden">
+    <a href="/timpla/" class="flex items-center gap-2 font-heading text-2xl font-medium" aria-label="Timpla, overview">
+      <!-- Timpla's mark: a cup seen from above (a ring in the card colour) on a roast-brown rounded square -->
+      <svg width="28" height="28" viewBox="0 0 52 52" aria-hidden="true">
+        <rect x="2" y="2" width="48" height="48" rx="14" fill="var(--rosas-5)"></rect>
+        <circle cx="26" cy="26" r="12" fill="none" stroke="var(--card)" stroke-width="4"></circle>
+        <circle cx="26" cy="26" r="4.5" fill="var(--card)"></circle>
+      </svg>
+      Timpla
+    </a>
+    <nav aria-label="Timpla">
+      <ul class="flex list-none flex-wrap gap-x-5 gap-y-1 p-0 text-[15px] font-medium text-muted-foreground">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                aria-current={current === l.id ? "page" : undefined}
+                class="inline-flex min-h-11 items-center hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-primary-strong aria-[current=page]:underline-offset-8"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="ml-auto flex items-center gap-3">
+      <a href="/" class="font-mono text-xs text-muted-foreground hover:text-foreground">a side project by Ivanka Mendoza ↗</a>
+      <ThemeMenu client:load />
+    </div>
+  </header>
+  <slot />
+  <p class="mt-16 border-t border-border pt-5 text-[13px] text-muted-foreground">
+    Data as of {meta.builtAt}. Map data © <a class="underline underline-offset-4" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) ·
+    places corroborated with Overture Maps ·
+    harvest data: Philippine Statistics Authority · editorial sources cited per café ·
+    no Google or Foursquare ratings, by design.
+  </p>
+</Layout>

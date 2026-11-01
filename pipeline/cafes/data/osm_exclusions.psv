@@ -1,0 +1,9 @@
+# Hand exclusions for build_directory.py: osm_id (n/w/r + id) | reason
+osm_id|reason
+n5323226094|spot-check 2026-10-22: not_a_cafe; Restaurant/events/catering in Meycauayan, Bulacan; no QC branch found
+n1045023510|spot-check 2026-10-22: not_a_cafe; Is Hizon's Cakes & Pastries bakery (Jorge Bocobo cor Arquiza); active Oct 2026
+n7100165395|spot-check 2026-10-22: not_a_cafe; Milk tea shop + franchising since 2014 (Evangelista St, Bangkal); active Oct 2026
+n7566025030|spot-check 2026-10-22: not_a_cafe; Chinese restaurant above Eng Bee Tin, 650 Ongpin; still operating
+w260705442|spot-check 2026-10-22: not_a_cafe; Open (FB Oct 2026) but a chain: Mindoro-based, branches in 5 provinces
+n10078637168|spot-check 2026-10-22: closed; IG bio: 'Our store is officially closed'; last posts Nov-Dec 2025
+n1152261698|spot-check 2026-10-22: not_a_cafe; Patisserie/cake shop, 305 Tomas Morato; active Oct 2026

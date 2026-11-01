@@ -1,0 +1,104 @@
+---
+// Static map of Metro Manila: simplified city outlines, one dot per mapped branch, and café names beside the
+// dots wherever they fit, all rendered at build time. Hovering a dot shows its details (SVG <title>).
+import { getNcr, getPoints } from "@/lib/data";
+import type { Point } from "@/lib/data/schemas";
+
+type Props = { highlight?: string; class?: string; label?: string };
+const { highlight, class: cls = "", label } = Astro.props;
+const [ncr, points] = await Promise.all([getNcr(), getPoints()]);
+type P = Point;
+
+const shown = highlight ? points.filter((p) => p.slug === highlight) : points;
+const others = highlight ? points.filter((p) => p.slug !== highlight) : [];
+const order: Record<string, number> = { indie: 0, recognised: 1, acclaimed: 2 };
+const sorted = [...shown].sort((a, b) => order[a.tier] - order[b.tier]);
+
+const details = (p: P) =>
+  [
+    p.name + (p.branch ? ` · ${p.branch}` : ""),
+    [p.nb, p.city].filter((x, i, a) => x && a.indexOf(x) === i).join(", "),
+    `${p.tier}${p.since ? ` · since ${p.since}` : ""}`,
+    p.beans ? `beans: ${p.beans}` : "",
+  ].filter(Boolean).join("\n");
+
+// ───────── Label placement: greedy, best-known first, one label per café, no overlaps ─────────
+const FONT = highlight ? 13 : 7.2;
+const W = 300, H = 380;
+type Box = { x0: number; y0: number; x1: number; y1: number };
+const placed: Box[] = [];
+// Breathing room around each label, and a cap on the small overview map, so the dense core stays readable
+const PAD = FONT * 0.6;
+const MAX_LABELS = highlight ? 1 : 18;
+const hits = (b: Box) => placed.some((o) => b.x0 - PAD < o.x1 && b.x1 + PAD > o.x0 && b.y0 - PAD < o.y1 && b.y1 + PAD > o.y0);
+const labels: { x: number; y: number; text: string; anchor: "start" | "end" }[] = [];
+const seen = new Set<string>();
+const candidates = [...shown].sort((a, b) => order[b.tier] - order[a.tier] || a.name.length - b.name.length);
+for (const p of candidates) {
+  if (seen.has(p.slug)) continue;
+  if (labels.length >= MAX_LABELS) break;
+  const short = p.name.replace(/\s*\(.*?\)\s*/g, " ").trim();
+  const text = short.length > 22 ? short.slice(0, 21).trimEnd() + "…" : short;
+  const w = text.length * FONT * 0.5, h = FONT * 1.15;
+  const [x, y] = p.xy;
+  for (const side of ["start", "end"] as const) {
+    const lx = side === "start" ? x + FONT * 0.75 : x - FONT * 0.75;
+    const box = { x0: side === "start" ? lx : lx - w, x1: side === "start" ? lx + w : lx, y0: y - h / 2, y1: y + h / 2 };
+    if (box.x0 < 0 || box.x1 > W || box.y0 < 0 || box.y1 > H || hits(box)) continue;
+    placed.push(box);
+    labels.push({ x: lx, y, text, anchor: side });
+    seen.add(p.slug);
+    break;
+  }
+}
+---
+
+<svg
+  viewBox="0 0 300 380"
+  class={`block h-auto w-full ${cls}`}
+  role="img"
+  aria-label={label ?? `Map of Metro Manila with ${points.length} specialty café branches; most cluster in Makati, Taguig and Quezon City.`}
+>
+  <path d={ncr.path} fill="var(--muted)" stroke="var(--border)" stroke-width="1"></path>
+  {others.map((p) => <circle cx={p.xy[0]} cy={p.xy[1]} r="2.5" fill="var(--muted-foreground)" opacity="0.35"><title>{details(p)}</title></circle>)}
+  {
+    sorted.map((p) =>
+      p.tier === "indie" ? (
+        <circle cx={p.xy[0]} cy={p.xy[1]} r={highlight ? 6 : 3.6} fill="var(--card)" stroke="var(--tier-indie)" stroke-width="1.8" class="cursor-help">
+          <title>{details(p)}</title>
+        </circle>
+      ) : (
+        <circle
+          cx={p.xy[0]}
+          cy={p.xy[1]}
+          r={highlight ? 6 : 4}
+          fill={p.tier === "acclaimed" ? "var(--tier-acclaimed)" : "var(--tier-recognised)"}
+          stroke="var(--card)"
+          stroke-width="1.2"
+          class="cursor-help"
+        >
+          <title>{details(p)}</title>
+        </circle>
+      ),
+    )
+  }
+  <g aria-hidden="true" style={`font: 500 ${FONT}px Figtree, system-ui, sans-serif; pointer-events: none;`}>
+    {
+      labels.map((l) => (
+        <text
+          x={l.x}
+          y={l.y}
+          dominant-baseline="central"
+          text-anchor={l.anchor}
+          fill="var(--foreground)"
+          stroke="var(--card)"
+          stroke-width={FONT * 0.32}
+          stroke-linejoin="round"
+          paint-order="stroke"
+        >
+          {l.text}
+        </text>
+      ))
+    }
+  </g>
+</svg>

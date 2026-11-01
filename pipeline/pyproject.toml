@@ -1,0 +1,12 @@
+[project]
+name = "timpla-pipeline"
+version = "1.0.0"
+description = "Builds Timpla's data releases: Metro Manila cafés (OSM, Overture, editorial lists) and Philippine coffee (PSA OpenSTAT)."
+requires-python = ">=3.12"
+dependencies = [
+  "certifi>=2024.2.2",   # CA bundle for the PSA OpenSTAT fetch (macOS Python ships without one)
+  "duckdb>=1.1",         # Overture Places query (cafes/scripts/fetch_overture_cafes.py)
+]
+
+[tool.uv]
+package = false

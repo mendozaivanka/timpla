@@ -1,0 +1,37 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import CafeMap from "@/components/timpla/CafeMap";
+import { getIndependents, getOsmLayer, getPoints, getTimplaMeta } from "@/lib/data";
+import { evidenceText, outLink } from "@/lib/timpla";
+
+const [points, unverified, meta, independents] = await Promise.all([getPoints(), getOsmLayer(), getTimplaMeta(), getIndependents()]);
+
+const mapPoints = points.map(({ slug, name, branch, tier, city, nb, lon, lat, beans, since }) => ({ slug, name, branch, tier, city, nb, lon, lat, beans, since }));
+// Only what the card needs, so the page stays light
+const others = independents.map((c) => {
+  const link = outLink(c);
+  return { name: c.name, cls: c.cls, city: c.city, lon: c.lon, lat: c.lat, n: c.n, evidence: evidenceText(c.ev, c.evd), href: link.href, linkLabel: link.label };
+});
+const d = meta.directory;
+const mapped = meta.mapped + others.length;
+---
+
+<TimplaLayout title="Map" current="map" description={`An interactive map of ${mapped} independent café branches in Metro Manila, ${meta.mapped} of them specialty.`}>
+  <section class="grid gap-5 pt-10">
+    <div>
+      <span class="label-mono">Map</span>
+      <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">Where the independent cafés are</h1>
+      <p class="mt-2 max-w-[62ch] text-muted-foreground">
+        {mapped} of {d.branches} branches have a location we could verify. Specialty cafés are the dark dots, named; the
+        other independents gather into numbered circles until you zoom in. Tap any dot for its details. Prefer a list?{" "}
+        <a href="/timpla/cafes/" class="font-medium text-primary-strong underline underline-offset-4">The directory</a> has every branch.
+      </p>
+    </div>
+    <CafeMap client:visible points={mapPoints as any} others={others as any} unverified={unverified as any} />
+    <p class="text-[13px] text-muted-foreground">
+      {d.branches - mapped} specialty branches have no verified coordinates yet and appear only in the directory. "Unverified"
+      cafés are on OpenStreetMap with no check since 2024 and no live business page; many will have closed. Basemap ©
+      OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors.
+    </p>
+  </section>
+</TimplaLayout>

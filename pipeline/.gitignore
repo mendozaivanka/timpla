@@ -1,0 +1,11 @@
+build/
+.venv/
+__pycache__/
+# intermediate outputs of cafes/scripts (rebuilt on every run)
+cafes/cafes.csv
+cafes/cafes.geojson
+cafes/directory.csv
+cafes/directory.geojson
+cafes/osm_layer.json
+cafes/qa_report.md
+cafes/qa_directory.md

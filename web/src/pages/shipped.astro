@@ -1,0 +1,56 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import Sankey from "@/components/tanim/Sankey.astro";
+import { getTanimImports, getTanimMeta } from "@/lib/data";
+import { FORMS, fmt } from "@/lib/tanim";
+
+const [imports, meta] = await Promise.all([getTanimImports(), getTanimMeta()]);
+const years = meta.importYears; const y = years.at(-1)!; const imp = imports[y];
+const usd = Object.values(imp.byForm).reduce((s, f) => s + f.usd, 0), kg = Object.values(imp.byForm).reduce((s, f) => s + f.kg, 0);
+const byOrigin = new Map<string, { usd: number; kg: number }>();
+for (const f of imp.flows) { const o = byOrigin.get(f.name) ?? { usd: 0, kg: 0 }; o.usd += f.usd; o.kg += f.kg; byOrigin.set(f.name, o); }
+const origins = [...byOrigin.entries()].sort((a, b) => b[1].usd - a[1].usd);
+const formRows = ["green", "roasted", "extracts"].map((form) => {
+  const total = imp.byForm[form] ?? { usd: 0, kg: 0 };
+  const tops = imp.flows.filter((f) => f.form === form).sort((a, b) => b.usd - a.usd).slice(0, 3).map((f) => `${f.name} ${Math.round((f.usd / (total.usd || 1)) * 100)} %`);
+  return { form, label: FORMS[form], usd: total.usd, kg: total.kg, tops };
+});
+const topOf = (form: string) => imp.flows.filter((f) => f.form === form).sort((a, b) => b.usd - a.usd)[0]?.name ?? "…";
+const beansFrom = topOf("green"), roastedFrom = topOf("roasted");
+const trend = years.map((yr) => { const t = Object.values(imports[yr].byForm).reduce((s, f) => s + f.usd, 0); const g = imports[yr].byForm.green ?? { kg: 0, usd: 0 }; return { yr, usd: t, greenKg: g.kg }; });
+---
+
+<TimplaLayout title="Shipped in" current="shipped" description="Where the Philippines' imported coffee comes from, by country and product form, from PSA's import tables.">
+  <section class="grid gap-5 pt-10">
+    <div>
+      <span class="label-mono">Shipped in · PSA imports by country of origin · {years[0]}–{y}</span>
+      <h1 class="mt-1 max-w-[24ch] font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-normal tracking-tight text-balance">Beans from {beansFrom}, roasted coffee via {roastedFrom}.</h1>
+      <p class="mt-3 max-w-[64ch] text-muted-foreground">In {y} the Philippines imported {fmt(kg / 1000)} tonnes of coffee beans and extracts worth USD {fmt(usd / 1e6)} million, counted at the border by tariff line and country. Which country supplies it depends on the form: green beans, roasted beans, or the extracts used for instant coffee. 3-in-1 sachets are left out; they are mostly sugar and creamer.</p>
+    </div>
+    <dl class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">USD {fmt(usd / 1e6)} M</dd><dt class="label-mono mt-1">paid at the border, {y}</dt></div>
+      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{fmt(kg / 1000)} t</dd><dt class="label-mono mt-1">product weight</dt></div>
+      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{Math.round((origins[0][1].usd / usd) * 100)} %</dd><dt class="label-mono mt-1">of value from {origins[0][0]}</dt></div>
+      <div><dd class="m-0 font-heading text-3xl leading-none tabular-nums">{origins.length}</dd><dt class="label-mono mt-1">origin countries</dt></div>
+    </dl>
+    <div class="rounded-2xl border border-border bg-card p-5">
+      <Sankey layout={imp.sankey} />
+      <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[12.5px] text-muted-foreground">
+        {([["green", "var(--rosas-3)"], ["roasted", "var(--rosas-4)"], ["extracts", "var(--rosas-5)"]] as const).map(([f, c]) => <span class="inline-flex items-center gap-1.5"><span class="size-3 rounded-sm" style={`background:${c}`}></span>{FORMS[f]}</span>)}
+        <span class="inline-flex items-center gap-1.5"><span class="h-3 w-4 rounded-sm bg-rosas-4 opacity-40"></span>lighter: shipped via a hub, not grown there</span>
+      </div>
+    </div>
+    <div class="grid gap-3 rounded-2xl border border-border bg-card p-5">
+      <span class="text-[15px] font-semibold">By product form, {y}</span>
+      <table class="w-full border-collapse text-left text-[13px]"><thead><tr class="border-b border-border text-muted-foreground"><th class="py-1.5 font-medium">Form</th><th class="font-medium">USD M</th><th class="font-medium">tonnes</th><th class="font-medium">Top origins by value</th></tr></thead>
+        <tbody>{formRows.map((r) => <tr class="border-b border-border/60"><td class="py-1.5">{r.label}</td><td class="font-mono">{fmt(r.usd / 1e6, 1)}</td><td class="font-mono">{fmt(r.kg / 1000)}</td><td>{r.tops.join(", ")}</td></tr>)}</tbody></table>
+      <p class="m-0 text-[12.5px] text-muted-foreground">Weights are product weight, never added across forms. Malaysia, Singapore and Switzerland are hubs that re-export, not growers.</p>
+    </div>
+    <div class="grid gap-3 rounded-2xl border border-border bg-card p-5">
+      <span class="text-[15px] font-semibold">Year by year</span>
+      <table class="w-full border-collapse text-left text-[13px]"><thead><tr class="border-b border-border text-muted-foreground"><th class="py-1.5 font-medium">Year</th><th class="font-medium">All coffee products, USD M</th><th class="font-medium">Green beans, tonnes</th></tr></thead>
+        <tbody>{trend.map((r) => <tr class="border-b border-border/60"><td class="py-1.5 font-mono">{r.yr}</td><td class="font-mono">{fmt(r.usd / 1e6)}</td><td class="font-mono">{fmt(r.greenKg / 1000)}</td></tr>)}</tbody></table>
+      <p class="m-0 text-[12.5px] text-muted-foreground">PSA OpenSTAT, Annual Value of Philippine Imports by Commodity and Country of Origin (tariff lines 0901 and 2101.11; 3-in-1 preparations, 2101.12, left out), one table per year, updated {(meta.tables["0012L4DMFD4.px"]?.updated ?? "").slice(0, 10)}. The same figures PSA sends to UN Comtrade.</p>
+    </div>
+  </section>
+</TimplaLayout>

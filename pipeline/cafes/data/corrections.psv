@@ -1,0 +1,6 @@
+name|branch_name|field|value|reason
+STAN Coffee Roasters||exclude|no_physical_cafe|Own carrd site (2025-11-26) describes online retail and delivery only; no café to visit
+Takao Studios Coffee||exclude|outside_ncr|Only location found is Tagaytay, Cavite (status check 2026-10-21)
+Omotesando Koffee|Power Plant Mall|branch_name|Salcedo (Dowell Tower, Valero St)|Row's coordinates are the OSM node of the Salcedo branch; that node has check_date 2026-09-03
+Omotesando Koffee|Power Plant Mall|status_2026|open|OSM check_date 2026-09-03 on the Salcedo node (https://www.openstreetmap.org/), see status_updates.psv
+But First, Coffee||exclude|chain|Chain (about 28 NCR locations on Overture; on data/chains.psv); removed from the specialty layer at Ivanka's request 2026-10-22

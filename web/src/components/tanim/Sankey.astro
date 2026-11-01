@@ -1,0 +1,21 @@
+---
+/** The precomputed origin → product-form Sankey from imports.json (one unit per figure, never two scales). */
+import type { TanimImports } from "@/lib/data/schemas";
+import { FORMS } from "@/lib/tanim";
+type Props = { layout: TanimImports[string]["sankey"]; hubs?: string[] };
+const { layout, hubs = ["Malaysia", "Singapore", "Switzerland"] } = Astro.props;
+const colour: Record<string, string> = { green: "var(--rosas-3)", roasted: "var(--rosas-4)", extracts: "var(--rosas-5)" };
+const money = (v: number) =>
+  layout.unit === "usd"
+    ? v >= 1e6 ? `USD ${(v / 1e6).toLocaleString("en", { maximumFractionDigits: 1 })} M` : v >= 1e3 ? `USD ${(v / 1e3).toLocaleString("en", { maximumFractionDigits: 0 })} K` : `USD ${Math.round(v).toLocaleString("en")}`
+    : v >= 1000 ? `${(v / 1000).toLocaleString("en", { maximumFractionDigits: 0 })} t` : `${v.toLocaleString("en", { maximumFractionDigits: 0 })} kg`;
+const pct = (share: number) => (share >= 0.001 ? (share * 100).toFixed(1) : "under 0.1") + " %";
+---
+
+<svg viewBox={`0 0 ${layout.width} ${layout.height}`} class="block h-auto w-full overflow-visible" role="img" aria-label={`Coffee imports by origin and product form, ${layout.unit === "usd" ? "CIF value" : "weight"}`}>
+  {layout.links.map((l) => (
+    <path d={l.d} fill="none" stroke={colour[l.form] ?? "var(--rosas-2)"} stroke-opacity={hubs.some((h) => l.origin.startsWith(h)) ? "0.35" : "0.72"} stroke-width={l.width}><title>{l.origin} → {FORMS[l.form] ?? l.form}: {money(l.value)} ({pct(l.share)})</title></path>
+  ))}
+  {layout.origins.map((o) => (<><rect x={o.x} y={o.y0} width={o.w} height={Math.max(o.y1 - o.y0, 1)} fill="var(--foreground)"></rect><text x={o.x - 8} y={(o.y0 + o.y1) / 2 + 4} text-anchor="end" font-family="Figtree, sans-serif" font-size="12" fill="var(--foreground)">{o.name}{hubs.some((h) => o.name.startsWith(h)) ? " · via" : ""} <tspan font-family="DM Mono, monospace" font-size="11" fill="var(--muted-foreground)">{money(o.value)}</tspan></text></>))}
+  {layout.forms.map((f) => (<><rect x={f.x} y={f.y0} width={f.w} height={f.y1 - f.y0} fill={colour[f.name]}></rect><text x={f.x + f.w + 8} y={(f.y0 + f.y1) / 2 + 4} font-family="Figtree, sans-serif" font-size="12.5" font-weight="600" fill="var(--foreground)">{FORMS[f.name] ?? f.name} <tspan font-family="DM Mono, monospace" font-size="11" font-weight="400" fill="var(--muted-foreground)">{money(f.value)}</tspan></text></>))}
+</svg>

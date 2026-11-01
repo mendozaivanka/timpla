@@ -1,0 +1,103 @@
+# Curated chain list for build_directory.py. One row per brand, so an addition is a one-line edit.
+# name: brand as written. kind: coffee | tea | donut | bakery | restaurant | retail.
+# match: prefix (default) = normalised name or brand starts with norm(name); exact = must equal it.
+# A shop also becomes a chain without being listed here when it has >= 10 deduplicated NCR locations.
+name|kind|match|note
+Starbucks|coffee|prefix|incl. Starbucks Reserve
+The Coffee Bean & Tea Leaf|coffee|prefix|
+Coffee Bean|coffee|exact|short form used on Overture
+Bo's Coffee|coffee|prefix|
+Tim Hortons|coffee|prefix|
+ZUS Coffee|coffee|prefix|
+Pickup Coffee|coffee|prefix|
+But First Coffee|coffee|prefix|
+Dear Joe|coffee|prefix|
+Seattle's Best|coffee|prefix|
+Figaro|coffee|prefix|
+UCC|coffee|prefix|UCC Vienna Café / UCC Café Terrace
+Coffee Project|coffee|prefix|Wilcon group
+Café Amazon|coffee|prefix|
+Highlands Coffee|coffee|prefix|
+TOMORO Coffee|coffee|prefix|
+Black Canyon|coffee|prefix|
+Gloria Jean's|coffee|prefix|
+Costa Coffee|coffee|prefix|
+Segafredo|coffee|prefix|
+Caffè Pascucci|coffee|prefix|
+Cafe Pascucci|coffee|prefix|
+McCafé|coffee|prefix|
+McCafe|coffee|prefix|
+Coffee Buddy|coffee|prefix|
+Cafe France|bakery|prefix|
+Café France|bakery|prefix|
+St. Marc Café|coffee|prefix|
+KopiRoti|coffee|prefix|
+Kopi Roti|coffee|prefix|
+Ya Kun|coffee|prefix|
+Luk Yuen|restaurant|prefix|
+Dunkin|donut|prefix|
+Krispy Kreme|donut|prefix|
+J.CO|donut|prefix|
+Mister Donut|donut|prefix|
+Go Nuts Donuts|donut|prefix|
+Chatime|tea|prefix|
+Macao Imperial|tea|prefix|
+Gong Cha|tea|prefix|
+Tiger Sugar|tea|prefix|
+Serenitea|tea|prefix|
+Infinitea|tea|prefix|
+CoCo Fresh|tea|prefix|
+CoCo|tea|exact|
+Mixue|tea|prefix|
+Chagee|tea|prefix|
+Quickly|tea|prefix|
+Happy Lemon|tea|prefix|
+Tealive|tea|prefix|
+BigBrew|tea|prefix|
+Big Brew|tea|prefix|
+Cha Tuk Chak|tea|prefix|
+Sharetea|tea|prefix|
+KOI Thé|tea|prefix|
+Yi Fang|tea|prefix|
+Royaltea|tea|prefix|
+Cha Dao|tea|prefix|
+ShuYi|tea|prefix|
+Dakasi|tea|prefix|
+Moonleaf|tea|prefix|
+Teaza|tea|prefix|
+KKOPI.Tea|tea|prefix|
+Greyhound Café|restaurant|prefix|
+Country Style|donut|prefix|
+Conti's|bakery|prefix|
+Mary Grace|bakery|prefix|
+Kuya J|restaurant|prefix|
+Paper Moon|bakery|prefix|
+Cara Mia|bakery|prefix|
+Kenny Rogers|restaurant|prefix|
+Jollibee|restaurant|prefix|
+Red Ribbon|bakery|prefix|
+Goldilocks|bakery|prefix|
+Tous les Jours|bakery|prefix|
+Paris Baguette|bakery|prefix|
+BreadTalk|bakery|prefix|
+Mrs. Fields|bakery|prefix|
+Paul|bakery|exact|
+7-Eleven|retail|prefix|
+Ministop|retail|prefix|
+IKEA|retail|prefix|
+M&S|retail|prefix|
+Bench|retail|prefix|Bench Coffee Station
+Black Scoop|tea|prefix|added after the first QA pass (56 NCR locations)
+Kkopi|tea|prefix|Kkopi Tea; Korean-style milk tea franchise
+Bon Appetea|tea|prefix|
+Nitro 7|tea|prefix|milk tea franchise
+The Matcha Tokyo|tea|prefix|
+D'Cream|tea|prefix|
+DCream|tea|prefix|
+Paik's Coffee|coffee|prefix|Korean franchise
+Don Macchiatos|coffee|prefix|kiosk franchise
+Rocky Mountain Chocolate|retail|prefix|US chocolatier franchise
+TWG Tea|tea|prefix|Singapore luxury tea chain
+Bhon Cafe|tea|prefix|milk tea franchise (spot-check 2026-10-22)
+CUPS|coffee|exact|branches in five provinces (spot-check 2026-10-22)
+Publiq|coffee|prefix|about 5 Makati branches; small chain per spot-check

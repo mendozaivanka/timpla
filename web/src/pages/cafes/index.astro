@@ -1,0 +1,48 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import BranchList from "@/components/timpla/BranchList";
+import { getIndependents, getShops, getTimplaMeta } from "@/lib/data";
+import { toDirectoryRows, CLASS_TEXT } from "@/lib/timpla";
+
+const [shops, independents, meta] = await Promise.all([getShops(), getIndependents(), getTimplaMeta()]);
+const directoryRows = toDirectoryRows(shops, independents);
+
+const d = meta.directory;
+const classes = [
+  { id: "specialty", label: "Specialty", n: d.classes.specialty },
+  { id: "independent", label: "Independent", n: d.classes.independent },
+  { id: "multibranch", label: "Multi-branch", n: d.classes.multibranch },
+] as const;
+---
+
+<TimplaLayout
+  title="Cafés"
+  current="cafes"
+  description={`${d.shops} independent cafés in Metro Manila, ${meta.shops} of them verified specialty, each with evidence it's open.`}
+>
+  <section class="grid gap-5 pt-10">
+    <div>
+      <span class="label-mono">Directory</span>
+      <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">{d.shops} cafés, {d.branches} branches</h1>
+      <p class="mt-2 max-w-[62ch] text-muted-foreground">
+        Every independent café we could find with recent evidence it's open. Chains (10 or more locations, or a known
+        franchise) are left out. Specialty cafés have a receipt page; the rest link to their Instagram, site or map entry.{" "}
+        <a href="/timpla/data/" class="font-medium text-primary-strong underline underline-offset-4">How we decide</a>.
+      </p>
+    </div>
+    <dl class="grid max-w-3xl gap-2 text-sm sm:grid-cols-3">
+      {
+        classes.map((c) => (
+          <div class="flex gap-2">
+            <span class="tier-dot mt-1" data-tier={c.id === "specialty" ? "acclaimed" : c.id} />
+            <div>
+              <dt class="font-semibold">{c.label} · {c.n}</dt>
+              <dd class="m-0 text-muted-foreground">{CLASS_TEXT[c.id]}</dd>
+            </div>
+          </div>
+        ))
+      }
+    </dl>
+    <BranchList client:load rows={directoryRows} full />
+  </section>
+</TimplaLayout>

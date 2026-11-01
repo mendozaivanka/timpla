@@ -1,0 +1,44 @@
+---
+// Specialty café openings per year (all tracked openings in the scene), 2012–2026.
+import { getTimeline } from "@/lib/data";
+
+const timeline = await getTimeline();
+
+const years = timeline.years;
+const max = Math.max(...years.map((y) => y.opened));
+const current = new Date().getFullYear();
+---
+
+<figure class="m-0 grid gap-3">
+  <div class="flex h-52 items-end gap-1.5 border-b border-rosas-3 sm:gap-2" aria-hidden="true">
+    {
+      years.map((y) => (
+        <div class="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
+          <span class="font-mono text-[11px] text-muted-foreground">{y.opened}</span>
+          <span
+            class="block w-full max-w-9 rounded-t-md"
+            style={`height:${(y.opened / max) * 150}px;background:${
+              y.year === current
+                ? "repeating-linear-gradient(45deg,var(--rosas-4) 0 4px,var(--rosas-2) 4px 8px)"
+                : y.year >= 2022
+                  ? "var(--tier-recognised)"
+                  : "var(--rosas-3)"
+            }`}
+          />
+          <span class="font-mono text-[10px] text-muted-foreground">'{String(y.year).slice(2)}</span>
+        </div>
+      ))
+    }
+  </div>
+  <figcaption class="text-[13px] text-muted-foreground">
+    Specialty café openings per year across the scene, including shops not in the current list (closed, or with no 2025–26 evidence).
+    Hatched: {current}, still in progress. Some early years are upper bounds ("operating by").
+  </figcaption>
+  <details class="text-sm">
+    <summary class="cursor-pointer text-muted-foreground">Show the numbers</summary>
+    <table class="mt-3 w-full border-collapse text-left text-[13px]">
+      <thead><tr class="border-b border-border"><th class="py-1.5 font-medium">Year</th><th class="py-1.5 font-medium">Openings</th><th class="py-1.5 font-medium">Closures</th></tr></thead>
+      <tbody class="font-mono">{years.map((y) => <tr class="border-b border-border/60"><td class="py-1.5">{y.year}</td><td>{y.opened}</td><td>{y.closed}</td></tr>)}</tbody>
+    </table>
+  </details>
+</figure>

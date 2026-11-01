@@ -1,0 +1,131 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import BeansFinePrint from "@/components/tanim/BeansFinePrint.astro";
+import { getTimplaMeta } from "@/lib/data";
+import { TIER_TEXT, CLASS_TEXT } from "@/lib/timpla";
+
+const meta = await getTimplaMeta();
+
+const d = meta.directory;
+const ev = d.evidence as Record<string, number>;
+
+const sources = [
+  ["OpenStreetMap", "Café locations, the independent directory and its chain counts; © OpenStreetMap contributors, ODbL. The directory download is ODbL too.", "https://www.openstreetmap.org/copyright"],
+  ["Overture Maps Foundation (Places, 2026-09 release)", "Business pages used to corroborate that a café is still trading, and to count chain locations. CDLA-Permissive-2.0.", "https://overturemaps.org"],
+  ["OpenFreeMap", "Basemap tiles on the interactive map.", "https://openfreemap.org"],
+  ["Philippine Statistics Authority (OpenSTAT)", "Green coffee production by province, 2022–2025.", "https://openstat.psa.gov.ph"],
+  ["Editorial guides", "Tatler, Spot.ph, Philstar, GMA, The Beat, TripZilla, Lifestyle Asia and others; cited on each café's page.", ""],
+  ["Roasters' own shops", "Bean origins and prices from their public product listings, linked per product.", ""],
+  ["Festival lineups and stockist lists", "KapeCon, Philippine Coffee Expo, roasters' 'where to find our beans' pages.", ""],
+  ["Marikina Local Coffee Shop Directory", "Data from the Marikina Local Coffee Shop Directory, licensed CC BY 4.0.", "https://marikina-cafes.vercel.app"],
+];
+---
+
+<TimplaLayout title="About the data" current="data" description="How Timpla decides which cafés to include, how the coffee chapters count, and where every number comes from.">
+  <article class="grid max-w-3xl gap-10 pt-10 text-[17px] leading-relaxed">
+    <header>
+      <span class="label-mono">Methods</span>
+      <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">About the data</h1>
+      <p class="mt-3 text-muted-foreground">
+        Built {meta.builtAt}. {d.shops} cafés ({d.branches} branches) are in the directory; {meta.shops} of them ({meta.branches} branches) are verified specialty.
+      </p>
+    </header>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Who's in</h2>
+      <p>A café is in the directory when all four of these hold:</p>
+      <ol class="grid gap-2 pl-5">
+        <li><strong>It's in Metro Manila.</strong> Checked against city boundaries. BGC is labelled Taguig, following the 2022 Supreme Court ruling, even where older boundary files still draw it inside Makati.</li>
+        <li><strong>It's a café.</strong> Milk tea and bubble tea shops, donut and dessert counters, bakeries, restaurants and bars tagged as cafés, and internet cafés are left out.</li>
+        <li><strong>It isn't a chain.</strong> A chain is a brand on our curated list of about 90 coffee, tea, donut and bakery chains (Starbucks, Bo's, Tim Hortons, Pickup, the milk tea franchises and so on), or any name with <strong>10 or more locations</strong> in Metro Manila across OpenStreetMap and Overture. A local brand with 4 to 9 locations stays in, labelled multi-branch.</li>
+        <li><strong>There's recent evidence it's open.</strong> At least one of: a 2025–26 write-up or its own site (specialty cafés), an OpenStreetMap check dated 2024 or later, or a live business page at the same spot in Overture's September 2026 release, when that page is a confident match and the café also has its own website or social account.</li>
+      </ol>
+      <p class="mt-3 text-muted-foreground">
+        "Independent" means we found no chain signal, not that we verified who owns it. A live business page is the weakest
+        evidence: pages outlive shops. A hand check of 30 such cafés in October 2026 found 7 closed or not really cafés and 9
+        with no trace online, which is why a page alone is no longer enough.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Specialty is a badge</h2>
+      <p>On top of the directory, a café is marked specialty when it roasts its own beans, names a specialty roaster or origin, brews by method, or appears on a roaster's stockist list or a coffee-festival lineup, and its 2025–26 status was checked by hand. Specialty cafés get a receipt page.</p>
+      <dl class="mt-3 grid gap-3">
+        {
+          (["specialty", "independent", "multibranch"] as const).map((c) => (
+            <div class="flex gap-3">
+              <span class="tier-dot mt-2" data-tier={c === "specialty" ? "acclaimed" : c} />
+              <div>
+                <dt class="font-semibold">{c === "multibranch" ? "Multi-branch" : c[0].toUpperCase() + c.slice(1)} · {(d.classes as Record<string, number>)[c]} branches</dt>
+                <dd class="m-0 text-muted-foreground">{CLASS_TEXT[c]}</dd>
+              </div>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">How we know it's open</h2>
+      <table class="mt-3 w-full border-collapse text-[15px]">
+        <thead><tr class="border-b border-border text-left"><th class="py-2 font-semibold">Evidence, strongest first</th><th class="py-2 text-right font-semibold">Branches</th></tr></thead>
+        <tbody>
+          <tr class="border-b border-dashed border-border"><td class="py-2">Press, own site, menu or event roster, 2025–26</td><td class="py-2 text-right font-mono">{ev.editorial_2025_26 ?? 0}</td></tr>
+          <tr class="border-b border-dashed border-border"><td class="py-2">OpenStreetMap check dated 2024 or later</td><td class="py-2 text-right font-mono">{ev.osm_check ?? 0}</td></tr>
+          <tr class="border-b border-dashed border-border"><td class="py-2">Live business page at the same spot (Overture, Sep 2026), plus the café's own site or socials</td><td class="py-2 text-right font-mono">{ev.overture_2026_09 ?? 0}</td></tr>
+          <tr><td class="py-2 text-muted-foreground">On OpenStreetMap only, no recent check (map layer, not in the directory)</td><td class="py-2 text-right font-mono text-muted-foreground">{d.unverified}</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Specialty tiers measure press, not quality</h2>
+      <dl class="mt-3 grid gap-3">
+        {
+          (["acclaimed", "recognised", "indie"] as const).map((t) => (
+            <div class="flex gap-3">
+              <span class="tier-dot mt-2" data-tier={t} />
+              <div>
+                <dt class="font-semibold capitalize">{t} · {meta.tiers[t]} shops</dt>
+                <dd class="m-0 text-muted-foreground">{TIER_TEXT[t]}</dd>
+              </div>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="mt-3 text-muted-foreground">An indie café isn't worse; it just hasn't been written about yet. There are no Google or Foursquare ratings anywhere on this site: their terms don't allow storing or republishing them.</p>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Known gaps</h2>
+      <ul class="grid gap-2 pl-5 text-muted-foreground">
+        <li>Many small cafés exist only on Instagram, which we don't collect from, so the directory and the indie tier are undercounted.</li>
+        <li>OpenStreetMap is densest where its mappers live (Makati, Quezon City, Pasig); fewer cafés in the north of the metro partly means fewer mappers.</li>
+        <li>Press coverage leans to Makati, BGC and Quezon City; the north of the metro is thin in both press and map data.</li>
+        <li>Some opening years are upper bounds ("operating by 2016").</li>
+        <li>{meta.branches - meta.mapped} branches have no verified location yet and appear only in the directory.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Sources and credits</h2>
+      <ul class="m-0 mt-3 grid list-none gap-3 p-0">
+        {
+          sources.map(([name, text, url]) => (
+            <li>
+              {url ? <a href={url} rel="noopener" target="_blank" class="font-semibold underline underline-offset-4">{name}</a> : <span class="font-semibold">{name}</span>}
+              <span class="text-muted-foreground"> · {text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <BeansFinePrint />
+
+    <section>
+      <h2 class="font-heading text-3xl font-normal">Spot a mistake?</h2>
+      <p class="text-muted-foreground">Closed café, wrong address, a place we missed? <a href="mailto:mendozaivanka@gmail.com?subject=Timpla%20correction" class="font-medium text-primary-strong underline underline-offset-4">Email a correction</a> with a link as evidence.</p>
+    </section>
+  </article>
+</TimplaLayout>

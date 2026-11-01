@@ -1,0 +1,46 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import BeansNav from "@/components/tanim/BeansNav.astro";
+import { getTanimMeta, getTanimProvinces, getTanimReported } from "@/lib/data";
+import { fmt } from "@/lib/tanim";
+
+const [meta, provinces, reported] = await Promise.all([getTanimMeta(), getTanimProvinces(), getTanimReported()]);
+const y = meta.latestYear;
+const picks: { name: string; kind: string; note: string }[] = [
+  { name: "Sultan Kudarat", kind: "Robusta country", note: "the province that grows the largest share of the country's coffee" },
+  { name: "Davao del Sur", kind: "with the City of Davao", note: "Mt Apo arabica on Manila menus" },
+  { name: "Bukidnon", kind: "Arabica and Robusta", note: "the second province by tonnes" },
+  { name: "Sulu", kind: "Excelsa", note: "the country's largest Excelsa grower" },
+  { name: "Cavite", kind: "Robusta and Liberica (barako)", note: "Amadeo, the coffee capital" },
+  { name: "Benguet", kind: "Arabica", note: "on more Manila menus than any other province" },
+];
+const stops = picks.map((p, i) => ({ ...p, i: i + 1, prov: provinces.find((q) => q.name === p.name)!, said: reported.filter((r) => r.province === p.name)[0] })).filter((s) => s.prov);
+---
+
+<TimplaLayout title="Six coffee provinces" current="beans" description="A tour of six Philippine coffee provinces with PSA's figures for each.">
+  <BeansNav current="tour" />
+  <section class="flex flex-wrap items-center gap-10 pt-10">
+    <div class="flex flex-[1_1_360px] flex-col gap-4">
+      <span class="label-mono">Timpla · Beans · {y}</span>
+      <h1 class="font-heading text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.04] font-normal tracking-tight text-balance">Six coffee provinces, counted</h1>
+      <p class="max-w-[48ch] text-lg leading-relaxed text-muted-foreground">Each with PSA's own figure for {y} and one thing worth knowing. Tap a card to open the province receipt: varieties, hectares, trees, farmgate prices, and what people have reported from its towns.</p>
+    </div>
+    <figure class="m-0 flex flex-[1_1_320px] justify-center rounded-2xl border border-border bg-card p-5">
+      <svg viewBox={"0 0 " + meta.box.w + " " + meta.box.h} class="block h-auto w-full max-w-[300px]" role="img" aria-label="The six provinces on the map">
+        {provinces.map((p) => <path d={p.d} fill={stops.some((s) => s.prov.psgc === p.psgc) ? "var(--rosas-3)" : "var(--rosas-1)"} stroke="var(--card)" stroke-width="0.7"></path>)}
+        {stops.map((s) => <><circle cx={s.prov.cx} cy={s.prov.cy} r="8" fill="var(--primary-strong)" stroke="var(--card)" stroke-width="1.5"></circle><text x={s.prov.cx} y={s.prov.cy + 3.5} text-anchor="middle" font-family="DM Mono, monospace" font-size="9.5" fill="var(--card)">{s.i}</text></>)}
+      </svg>
+    </figure>
+  </section>
+  <section class="grid gap-4 pt-12 sm:grid-cols-2 lg:grid-cols-3">
+    {stops.map((s) => (
+      <a href={"/timpla/beans/#p=" + s.prov.psgc + "&y=" + y} class="grid content-start gap-2 rounded-2xl border border-border bg-card p-5 transition-colors hover:bg-muted">
+        <span class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-primary-strong font-mono text-[11px] text-card">{s.i}</span><span class="font-heading text-2xl">{s.name}</span></span>
+        <span class="text-[13px] text-muted-foreground">{s.prov.region} · {s.kind}</span>
+        <span class="flex items-baseline gap-2"><span class="font-heading text-3xl tabular-nums">{fmt(s.prov.production.all[y])} t</span><span class="rounded-full border border-border px-2 py-0.5 text-[11.5px]">Counted · PSA {y}</span></span>
+        <span class="text-[13px] leading-relaxed">{s.note}{s.said ? ". Reported: " + s.said.text : ""}</span>
+        <span class="text-[13px] font-semibold text-primary-strong">Open the receipt →</span>
+      </a>
+    ))}
+  </section>
+</TimplaLayout>

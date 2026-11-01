@@ -1,0 +1,404 @@
+# OSM indie candidate triage log (394 candidates) - generated 2026-10-21
+# Format: name | city | osm id | reason
+
+## STEP 1 - PRUNED without web lookup (chains, duplicates of editorial list, non-specialty)
+Miko Seit | Caloocan | n13431454655 | 24/7 generic
+Kei Coffee | Manila | n6251454787 | 24/7 generic, no other info
+lakbaypinas | Marikina | n12075961103 | 24/7 multi-cuisine restaurant
+Kohi - Maginhawa | Quezon City | n13142727623 | Japanese restaurant (Kohi)
+Unnie Cafe | Pasay | n11757381698 | Korean bakery-cafe, food-led
+Redbuck's | Manila | n6010067086 | Starbucks misspelling / knock-off name
+Starbuck's Coffee | Manila | n4376696189 | Starbucks misspelling / knock-off name
+CaffeXpress | Parañaque | n4904117027 | airport (NAIA T1 airside) kiosk
+M Boutique | Pasay | n11143523875 | airport outlet by The Manila Hotel
+Little Flour Café | Parañaque | n13373372277 | airport outlet of Wildflour group
+Jeuven’s Bibingka | Marikina | n12675665745 | bibingka shop
+Ludo | Quezon City | n4523135805 | board-game bar (Ludo)
+Nespresso | Makati | n9791533993 | brand boutique: Nespresso
+Nespresso | Pasay | n11215842550 | brand boutique: Nespresso
+Juan Cafe | Manila | n11733708565 | bubble-tea cafe
+Cake Muncher Manila | Quezon City | n12801684103 | cake shop
+Betty’s Sans Rival | Quezon City | n11493728669 | cake/bakeshop (Betty's Sans Rival)
+YAS Kitchen & Catering | Taguig | n12291913984 | catering kitchen
+Ka Tunying's Coffee, Breads & Meals | Parañaque | n12851870172 | chain/airport: Ka Tunying's
+B1T1 Takeaway Coffee | Mandaluyong | n12947629262 | chain: B1T1 Takeaway Coffee (budget franchise)
+B1T1 Takeaway Coffee | Pasay | n13236362143 | chain: B1T1 Takeaway Coffee (budget franchise)
+Beanleaf | Manila | w607837308 | chain: Beanleaf (local coffee/milk-tea chain)
+Beanleaf Katipunan | Quezon City | w290831045 | chain: Beanleaf (local coffee/milk-tea chain)
+Big Brew | Makati | n9818859024 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Caloocan | n10670019777 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Caloocan | n10692799415 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Caloocan | n10720514936 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Caloocan | n11136018876 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Taguig | n12458497474 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Taguig | n12460457527 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Valenzuela | n12798119981 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew | Makati | w262829240 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew Cafe | Manila | n11536706467 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew Cafe | Manila | n11543588811 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew Malabon | Malabon | n12193962243 | chain: BigBrew / bubble-tea-style budget franchise
+Big Brew Pasong Tamo | Quezon City | n11424001916 | chain: BigBrew / bubble-tea-style budget franchise
+BigBrew | Quezon City | n11416587545 | chain: BigBrew / bubble-tea-style budget franchise
+BigBrew | Quezon City | n11659868870 | chain: BigBrew / bubble-tea-style budget franchise
+BigBrew | Quezon City | n11990344438 | chain: BigBrew / bubble-tea-style budget franchise
+BigBrew | Manila | n11994973893 | chain: BigBrew / bubble-tea-style budget franchise
+BigBrew | Quezon City | n13860307152 | chain: BigBrew / bubble-tea-style budget franchise
+Bigbrew | Parañaque | n11465436568 | chain: BigBrew / bubble-tea-style budget franchise
+Bigbrew | Quezon City | n11982163585 | chain: BigBrew / bubble-tea-style budget franchise
+Bigbrew | Manila | n13959006026 | chain: BigBrew / bubble-tea-style budget franchise
+Bigbrew Central | Manila | n13142574302 | chain: BigBrew / bubble-tea-style budget franchise
+Bigger Brew | Makati | n13926150525 | chain: BigBrew / bubble-tea-style budget franchise
+Duo Brew | Makati | n13926139895 | chain: BigBrew / bubble-tea-style budget franchise
+big brew | Manila | n11538740972 | chain: BigBrew / bubble-tea-style budget franchise
+But First Coffee | Quezon City | n3446604731 | chain: But First Coffee (franchise)
+But First Coffee | Marikina | n12675662520 | chain: But First Coffee (franchise)
+But first coffee | Makati | n11863888669 | chain: But First Coffee (franchise)
+The Coffee Ministry | Quezon City | n2452666533 | chain: Coffee Ministry / Ministry of Coffee
+The Ministry of Coffee | Manila | n14019242862 | chain: Coffee Ministry / Ministry of Coffee
+Costa Coffee | Pasig | n5625878661 | chain: Costa Coffee
+Cotti Coffee | Pasig | n12716380465 | chain: Cotti Coffee
+Dear Joe | Muntinlupa | n12804190724 | chain: Dear Joe
+Dear Joe North Commons | Caloocan | n11383724717 | chain: Dear Joe
+Gloria Jean's Coffee | San Juan | n1271279001 | chain: Gloria Jean's
+Gloria Jeans Coffee | Quezon City | n6193831710 | chain: Gloria Jean's
+GO COFFEE | Mandaluyong | n12147232246 | chain: Go Coffee (budget franchise)
+Go Coffee | Quezon City | n11946272113 | chain: Go Coffee (budget franchise)
+Greyhound Café | Makati | n1068757285 | chain: Greyhound Café (Thai restaurant chain)
+Gringo's - Sampaloc Manila | Manila | n13962054863 | chain: Gringo's (chicken restaurant)
+HappyKopi | Quezon City | n11534026355 | chain: Happy Kopi (budget franchise)
+happykopi | Quezon City | n11990084691 | chain: Happy Kopi (budget franchise)
+happykopi | Quezon City | n11993009845 | chain: Happy Kopi (budget franchise)
+Highlands Coffee | Pasay | n5712913832 | chain: Highlands Coffee (Vietnam)
+Highlands Coffee | Pasay | n10959245078 | chain: Highlands Coffee (Vietnam)
+Highlands Coffee | Pasay | n11811730293 | chain: Highlands Coffee (Vietnam)
+Highlands Coffee | Manila | n11868641610 | chain: Highlands Coffee (Vietnam)
+Highlands Coffee | Quezon City | n13468569670 | chain: Highlands Coffee (Vietnam)
+Highlands Coffee | Pasig | n14110491377 | chain: Highlands Coffee (Vietnam)
+Hoshino Coffee | San Juan | n11518528378 | chain: Hoshino Coffee (Japan)
+Hoshino Coffee | Pasay | n12707165657 | chain: Hoshino Coffee (Japan)
+Kenangan Coffee | Pasay | n12339276920 | chain: Kopi Kenangan
+Mr. Brewsko | Quezon City | n13860307147 | chain: Mr. Brewsko (kiosk franchise)
+Mr.Brewsko | Marikina | n12677979532 | chain: Mr. Brewsko (kiosk franchise)
+Paik's Coffee | Makati | n11601368544 | chain: Paik's Coffee (Korea)
+Paik's Coffee | Manila | n12342809751 | chain: Paik's Coffee (Korea)
+Merienda by Pan de Manila | San Juan | n9657495667 | chain: Pan de Manila bakery
+Pick Up Coffee | Marikina | n12654174159 | chain: Pickup Coffee
+Pick-Up Coffee | Parañaque | n13475491697 | chain: Pickup Coffee
+Pick-up Coffee | San Juan | n13705226983 | chain: Pickup Coffee
+Tomo Coffee | Quezon City | n12084136052 | chain: Tomo Coffee (budget grab-and-go chain)
+Tomo Coffee | Quezon City | n13197930749 | chain: Tomo Coffee (budget grab-and-go chain)
+Tomo coffee | Mandaluyong | w1357782456 | chain: Tomo Coffee (budget grab-and-go chain)
+tomo coffee | Manila | n12692522687 | chain: Tomo Coffee (budget grab-and-go chain)
+TOMORO COFFEE - Binodo | Manila | n13300653601 | chain: Tomoro Coffee
+Tomoro Coffee | Manila | n12414857139 | chain: Tomoro Coffee
+Tomoro Coffee | Pasig | n13013625691 | chain: Tomoro Coffee
+Tomoro Coffee - Amberland | Pasig | n14136079401 | chain: Tomoro Coffee
+Tomoro Coffee - The Exchange Regency | Pasig | n14136056302 | chain: Tomoro Coffee
+Tully's Coffee | Pasig | n1742329367 | chain: Tully's
+Zu’s Coffee | Quezon City | n11974130244 | chain: ZUS Coffee (Malaysia)
+Niko and ... Coffee | Pasay | n12144006875 | chain: niko and ... (Japanese retail brand cafe)
+Auro Chocolate Cafe | Manila | n12686141020 | chocolate cafe (Auro) - chocolate not coffee focus
+Molly's Donut & Brunch Cafe | Pasig | n12161726691 | donut & brunch cafe, food-led
+Flklore Studio | Pasig | n9801572010 | duplicate of editorial "1C Coffee" (OSM old_name 1C, same Kapitolyo address)
+communeph | Makati | n5040106327 | duplicate of editorial "Commune Cafe + Bar + Roastery"
+Coopers Coffee Haus | Makati | n14142181831 | duplicate of editorial "Cooper's Coffee Haus"
+Kraft Coffee Revolution | Quezon City | n2615998252 | duplicate of editorial "Craft Coffee Revolution" (misspelt Kraft)
+Craft Coffee Roastery | Quezon City | n14050313102 | duplicate of editorial "Craft Coffee Revolution" SM North EDSA branch
+Elephant Grounds Coffee | Makati | n7042780385 | duplicate of editorial "Elephant Grounds Manila"
+Latitude Bean & Bar - One Ayala | Makati | n14065370001 | duplicate of editorial "Latitude Bean + Bar" One Ayala
+Papa Kape | Makati | n10576031764 | duplicate of editorial "Papakape"
+Papa Kape | Manila | n12583335679 | duplicate of editorial "Papakape"
+Papa Kape | Manila | n13197462032 | duplicate of editorial "Papakape"
+Toby’s Estate Coffee Roaster | Makati | n6444248488 | duplicate of editorial "Toby's Estate Philippines"
+Type A - NBS Park | Mandaluyong | n14049177801 | duplicate of editorial "Type A Coffee" NBS Park
+White Camp Specialty Coffee & Kitchen | Quezon City | n8866661891 | duplicate of editorial "White Camp Coffee and Kitchen"
+One Cafe and Events Place | Pasig | n11395490847 | events place
+Perfect Story Events Cafe | Taguig | n9419847744 | events place
+Sweet Heart's Cafe and Events Place | Las Piñas | n10683777465 | events place / bistro with bubble tea
+Ori Cafe | Las Piñas | n10120298901 | events place cafe
+Coffee Nook | Quezon City | n3446552677 | food-led (cuisine=regional), paid-internet study cafe
+Amo Yamie Crib | Manila | n4158776089 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Amo Yamie Crib | Manila | n4158973791 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Areum Cafe | Quezon City | n7950952210 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+IsKape | Quezon City | n10912048397 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+MaiCafe | Manila | n5982569389 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Mollie's World Cafè | Quezon City | n13581570765 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Nas & Neq | Quezon City | n12799771656 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Richard Eatery | Pasig | n4726865654 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Street Delights | Makati | n4760968122 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Sun Cafe | Manila | n13575331476 | food-led / non-coffee venue (OSM cuisine or name shows meals, desserts, events or other primary use)
+Bean Freeze | Makati | n5401445412 | frappe kiosk (Bean Freeze)
+Coffeeoffee Spot | Quezon City | n11936850861 | generic
+Coffee Spot | Quezon City | n6215504585 | generic 24/7 coffee spot, no other info
+Ghenne's Coffee Shop | Quezon City | n1599510848 | generic coffee shop inside Shopwise supermarket, no other info
+Cool-In Coffee Shop | Manila | n6148928387 | generic coffee shop, no other info
+Coffee Shop | Pasay | n3238982933 | generic name "Coffee Shop", no other info
+Coffee Corner | Manila | n11754890467 | generic name Coffee Corner
+Coffee Spot | Las Piñas | n10951681908 | generic name Coffee Spot
+Coffee Spot | Manila | n11733708558 | generic name Coffee Spot
+CoffeeSpot | Quezon City | n11951247389 | generic name CoffeeSpot
+30 Second Coffee Shop | Manila | n13303083101 | generic, no other info
+JUST COFFEE | Quezon City | n13191866720 | generic, no other info
+Jack's Corner | San Juan | n8317663135 | generic, no other info
+The Coffee Kitchen | Muntinlupa | n2697099596 | hotel lobby cafe (Parque España Residence Hotel)
+Wakey Cups | Quezon City | n5321273648 | kiosk (OSM description Kiosk), no other info
+Why Not Coffee? | Quezon City | n13426775449 | likely duplicate of editorial "WHYN0T" (Quezon City)
+Whynot Coffee | Quezon City | n13452840849 | likely duplicate of editorial "WHYN0T" (Quezon City)
+Caffe Pocofino | Makati | n11525030073 | local cafe/pizzeria group (Pocofino); Wack-wack Coffee Lab no longer listed on own site; no concrete specialty signal
+Pocofino Coffee Lab | Mandaluyong | n11525030072 | local cafe/pizzeria group (Pocofino); Wack-wack Coffee Lab no longer listed on own site; no concrete specialty signal
+Mad Brewers | Las Piñas | n6672792085 | milk tea / bubble tea shop
+Satinka Naturals | Makati | n4419870006 | natural-products shop, not a cafe
+Casa Elmira | Quezon City | n13015508657 | pastry shop
+Bark & Brew | Pasig | n12254199752 | pet grooming + cafe
+Cafe Oasis | Pasig | n10121140046 | restaurant chain (Cafe Oasis) - food-led, no coffee signal
+Cafe Oasis - Mercedes Ave | Pasig | n12070158798 | restaurant chain (Cafe Oasis) - food-led, no coffee signal
+Tastes from the Greens-Malabon | Malabon | n12194833473 | tea-led
+Yeng Cha | Pasig | n7965852407 | tea-led (cuisine tea/regional)
+Pegi Waffles | San Juan | n3610397239 | waffle shop
+
+## STEP 2 - CHECKED, no concrete specialty signal found (not written to indie_osm.psv)
+1.28 Coffee x Cocktails | Manila | n13727330389 | 1.28 Coffee x Cocktails - nothing found
+1000cc Coffee | Mandaluyong | n12372539568 | 1000cc Coffee - nothing found
+451 Coffee co. | Caloocan | n13382630401 | 451 Coffee co. - nothing found
+8065 Coffee | Makati | n9126140120 | 8065 Coffee - house cafe, cheap coffee + blended drinks (GMA, Yelp) - not specialty
+8680 Coffee | Makati | n10983530498 | 8680 Coffee - nothing found
+A.bode Space | San Juan | n13934962151 | A.bode Space - board-game/events cafe, nothing on coffee
+Abay Cafe | Mandaluyong | n13810187819 | Abay Cafe - same building as KUBO roastery; no independent evidence
+Ahon Coffee | Taguig | n14222007901 | Ahon Coffee - nothing found
+Ailo Coffee | San Juan | n13333289740 | Ailo Coffee - no web evidence found (IG @ailocoffee, OSM check 2025-11)
+Alistaire Coffee | Pasay | w265149866 | Alistaire Coffee - website down, nothing found
+Altitude Coffee | Pasig | n12730200844 | Altitude Coffee - nothing found
+Atmos Coffee Co | Quezon City | n12682572601 | Atmos Coffee Co - nothing found
+Bean Hustle | Manila | n12590356378 | Bean Hustle - nothing found
+BitterSweet Coffee | Taguig | n13788715401 | BitterSweet Coffee - nothing found
+BoardBrew | Manila | n13666251287 | BoardBrew - board-game cafe (IG)
+Brew Shots Cafe | Mandaluyong | n8632688184 | Brew Shots Cafe - pulled.coffee directory calls it a craft coffee bar with pour-overs but page paywalled (402); OSM cuisine bubble_tea, check_date 2023 - unverified
+Brioso Coffee | Makati | n11747395869 | Brioso Coffee - no web evidence found
+Caerus Coffee | Quezon City | n4214681091 | Caerus Coffee - guides cite a Caerus Specialty Coffee + Bistro (SCAE member) on Scout Torillo, but OSM point is D. Tuazon St - location mismatch, unverified
+Cafe Forty Six | Las Piñas | n13366454710 | Cafe Forty Six - blog says two Pilar Village shops roast in-house but does not name them; unconfirmed
+Coffee & Vinyl | Caloocan | n13674119669 | Coffee & Vinyl - nothing found
+Coffee : Life @32nd | Makati | n14133671677 | Coffee : Life @32nd - site says "freshly roasted" but no roaster/origin named
+Coffee Blanc | Mandaluyong | n12924971709 | Coffee Blanc - own site menu calls itself specialty coffee but no beans/roaster/brew method
+Coffee Gusto | Las Piñas | n11991902197 | Coffee Gusto - food-led
+Coffee Tate | Quezon City | n13502768463 | Coffee Tate - nothing found
+Coffee Theory | Quezon City | n10790099401 | Coffee Theory - nothing found
+Convenience Coffee | Makati | n11851801918 | Convenience Coffee - own Cococart menu has no specialty detail and says "closed for now"
+Coz Coffee | Makati | n13977985101 | Coz Coffee - nothing found
+Craffé | Makati | n13893338001 | Craffé - nothing found
+Department of Coffee | Quezon City | n4419091500 | Department of Coffee - only a San Juan address on a user list
+Do Güd Cafe | Marikina | n11288583766 | Do Güd Cafe - plant-filled cafe, no coffee specifics
+Dot Coffee | San Juan | n10203040311 | Dot Coffee - nothing found
+Draft Coffee | Marikina | n11062965178 | Draft Coffee - nothing found
+Eskina Coffee | Caloocan | n13674119663 | Eskina Coffee - Caloocan corner cafe, FB says extended hours Aug 2026 (open) but no specialty detail
+eskinita knl | Quezon City | n13019012134 | eskinita knl - nothing found
+Espresso Studio | Mandaluyong | n12815884501 | Espresso Studio - only job ads (Indeed); no coffee detail
+Estratto Manila Coffee Shop | Pateros | w315599050 | Estratto Manila - nothing found
+every.day cafe | Quezon City | n12620541905 | every.day cafe - nothing found
+Extend Coffee Co. | Marikina | n13690349951 | Extend Coffee Co. - 2023 blog calls it specialty coffee, nothing concrete
+F&H Coffee | San Juan | n1270332380 | F&H Coffee - nothing found
+FILC Coffee + Pastries | Pasay | n3591122817 | FILC Coffee + Pastries - nothing found
+Filtrante Coffee | Quezon City | n13766387690 | Filtrante Coffee - nothing found
+Good Thing Coffee Company | Mandaluyong | n12019776580 | Good Thing Coffee Company - no web evidence found
+Habagat Coffee and Outdoor Lifestyle | Pasig | n10586195961 | Habagat Coffee and Outdoor Lifestyle - bike cafe, cold brew/espresso; no bean detail
+Half&Half Coffee Club | Malabon | n12193907376 | Half&Half Coffee Club - milk-coffee + waffles (Spot.ph 2022); no specialty detail
+Hatch + Hoolman Studio | Taguig | n10635328179 | Hatch + Hoolman Studio - ceramics studio cafe, no bean detail (not the Kalsada stockist "Hatch" as far as can be told)
+Hello, Coffee & Bibingka | San Juan | n11830380382 | Hello, Coffee & Bibingka - not in Spot.ph Corner House guide; nothing found
+Hombrebrew Coffee House | Pasig | n8431934545 | Hombrebrew Coffee House - nothing found
+Inarawan Cafe | Marikina | n13788582183 | Inarawan Cafe - see Inarawan Coffee
+Inarawan Coffee | Marikina | n11149457688 | Inarawan Coffee - brews without espresso machine; Salty Cream Barako; no named roaster - weak
+Isa Una Kapihan & Atbp | Manila | n5598114423 | Isa Una Kapihan - nothing found
+Kafein | Marikina | n13609756190 | Kafein - nothing found
+Kalinaw Coffee Co. | Manila | n13125014713 | Kalinaw Coffee Co. - multi-branch vintage cafe, Spanish latte/Vietnamese coffee; no bean detail
+Kamp Kape | Caloocan | n8699777503 | Kamp Kape - nothing found
+Kape & Kwentuhan | Pasig | n12688921860 | Kape & Kwentuhan - nothing found
+Kape de la Cruz | Parañaque | n13353874616 | Kape de la Cruz - nothing found
+Kape Siklo | Manila | n9504066217 | Kape Siklo - nothing found
+Kape Siklo | Manila | n12397609757 | Kape Siklo (2nd point) - nothing found
+Kape Warehouse | San Juan | n8911343850 | Kape Warehouse - nothing found
+Lamp Post Coffee MNL | Manila | n13414203544 | Lamp Post Coffee MNL - own site lists espresso drinks, no roaster
+Love, Coffee | Las Piñas | n11991902199 | Love, Coffee - Spanish latte cafe, no bean detail
+Love, Coffee | Las Piñas | n12466338187 | Love, Coffee (2nd point) - as above
+Mugshot Coffee | Caloocan | n13305266692 | Mugshot Coffee - listed as specialty coffee shop by directories; no concrete signal
+Narrafé | Parañaque | n13738956561 | Narrafé - nothing found
+neolivbrews | Quezon City | n13197466041 | neolivbrews - nothing found
+Neolivbrews | Marikina | n13690336329 | Neolivbrews (Marikina) - nothing found
+Nitro 7 Coffee Bar | Manila | n10752396505 | Nitro 7 Coffee Bar - nothing found
+Noki Kopi | Navotas | n12193966127 | Noki Kopi - comfort drinks since 2021; no specialty detail
+Obladi Oblada | Manila | w450042748 | Obladi Oblada - Yelp only, no coffee detail
+Old Ironside Coffee | Quezon City | n13190682280 | Old Ironside Coffee - nothing found
+Outpost Coffee | Mandaluyong | n13463747454 | Outpost Coffee - search failed
+Pancho Cafe | Mandaluyong | w538566835 | Pancho Cafe - nothing found
+Pokko Coffee | Marikina | n12747704993 | Pokko Coffee - community directory says "house-roasted" Spanish latte (review-derived, weak); not included
+QOFFEA. | San Juan | n13934962152 | QOFFEA. - nothing found
+RadRoots Coffee | Pateros | n13475711383 | RadRoots Coffee - nothing found
+Sable | Quezon City | w1396548805 | Sable - New Manila cafe with midcentury interiors serving "specialty coffee" (Klikit) - nothing concrete
+San Pabrew | Mandaluyong | n13157829672 | San Pabrew - nothing found
+Sicilian Roast | Quezon City | n8633822972 | Sicilian Roast - nothing found
+Silingan Coffee | Manila | n11733747105 | Silingan Coffee (Malate, likely DLSU stall) - as above
+Silingan Coffee Shop | Quezon City | n11919903254 | Silingan Coffee (Cubao Expo) - notable social-enterprise cafe (est. Oct 2021, Wikipedia; open 2025) but no roasting/origin/brew-method evidence (dark coffee supplied by founder)
+Sixteen Centigrado | Quezon City | n12039888563 | Sixteen Centigrado - nothing found
+Sound | Pasig | n11504852369 | Sound (Sound Coffee) - open since 2019, artisan baked goods; no bean detail found (search cut off)
+Sumu Cafe & Creative Space | Manila | n12128146761 | Sumu Cafe - nothing found
+The Wallflower Café | Muntinlupa | n10078637168 | The Wallflower Café - nothing found
+Weekday Coffee | Pasig | n11699093520 | Weekday Coffee - nothing found
+X Wave Specialty Coffee | Quezon City | n13731447636 | X Wave Specialty Coffee - Linktree: "Home of the Latte Art Champions", barista classes; menu only in Google Drive; no named beans/brew methods found. IG @xwavespecialtycoffee. Strong candidate for manual check
+Yacht’s Brew | Las Piñas | n13681193465 | Yacht's Brew - medium/dark roast choice only, roaster unnamed
+Zero Degree Espresso Bar | Manila | n12047820209 | Zero Degree Espresso Bar - nothing found
+éllatte coffee | Manila | n12690311039 | éllatte coffee - work cafe blog review, no specialty detail
+
+## STEP 2 - NOT CHECKED (search budget; generic names with no website/IG/description in OSM - no specialty signal available offline)
+0402 Coffee | Manila | n11992607156 | unchecked
+10/10 Cafe | Parañaque | n11193022821 | unchecked
+13th Brew | Quezon City | n13462560073 | unchecked
+7th Heaven Cafe | Quezon City | n14072770296 | unchecked
+advocafe | Manila | n12543102183 | unchecked
+Aerorino's Coffee | Valenzuela | n10572183745 | unchecked
+Aujen's Coffee | Manila | w46913648 | unchecked
+Auring's Cafe | Quezon City | n14072770298 | unchecked
+Bahay + Kape | Valenzuela | n10023182054 | unchecked
+Balai Kaffa | Manila | n11736280907 | unchecked; osm check_date 2024-09-28
+Beans n Brew | Makati | n11578155569 | unchecked
+Bengal brew cafe | Quezon City | n4533626091 | unchecked
+Black Liquid Coffee | Valenzuela | n11530494300 | unchecked
+Blackscoop coffee | Quezon City | n11552958697 | unchecked
+Brew Corner | Quezon City | n11963832077 | unchecked
+Brew Corner | Quezon City | w539305092 | unchecked
+Brew Sisters Cafe | Quezon City | n11962920194 | unchecked
+Breward Café | Las Piñas | n5408859401 | unchecked
+Brewhilde Coffee | Taguig | n13934962154 | unchecked
+Brewing beyond coffee | Manila | n3601558396 | unchecked
+Brewman | Quezon City | n12843622934 | unchecked
+Brunch Bureau | Makati | n10603835353 | unchecked
+Buff's Coffee | Caloocan | n10274688845 | unchecked
+Buttery & Co | Quezon City | n11370725572 | unchecked; osm check_date 2023-11-23
+Cafe Aroma | Pasig | n10056160307 | unchecked
+Cafe de balai | Valenzuela | n9946136490 | unchecked
+Cafe Dolly's | Makati | n13902709816 | unchecked
+Cafe Janealo | Manila | n11729816004 | unchecked
+Cafe Pronto | Pasig | n12107531248 | unchecked; osm check_date 2025-10-07
+Caferista | Pasig | n5365406327 | unchecked
+Café 17 | Manila | n11755121093 | unchecked; osm check_date 2024-03-23
+CAFÉ CAPITANO | Valenzuela | n10221800794 | unchecked
+Calle Cafe by Don Gabriel | Manila | n12128146760 | unchecked
+Chef and Brewer | Quezon City | n6006851688 | unchecked
+Clout Coffee | Quezon City | n13951176093 | unchecked
+Coffee & Pillows | Pasig | n6121279785 | unchecked
+Coffee After Six | Parañaque | n7866991822 | unchecked
+Coffee Avenue | Mandaluyong | n12738866291 | unchecked; osm check_date 2026-01-31
+Coffee Belle | Quezon City | w260877773 | unchecked
+Coffee House D+C | Pasay | n3931929840 | unchecked
+Coffee Sharp | Mandaluyong | n13867093386 | unchecked
+Coffee Syndicate | Muntinlupa | n2649894246 | unchecked
+Cordillera Coffee | Quezon City | n2655179421 | unchecked
+Cow Coffee Station | Caloocan | w431308503 | unchecked; osm check_date 2023-11-24
+CU Coffee | Muntinlupa | n10963945676 | unchecked
+Cube Coffee | Quezon City | n9212385814 | unchecked
+D' Cream Coffee Shop | Valenzuela | n2377812303 | unchecked
+D'Cup Coffee Republic | Pasig | n11391360614 | unchecked; osm check_date 2023-12-03
+Daily Favor Cafe | Pasig | n2047434413 | unchecked
+Daily Habit | Quezon City | n12848454770 | unchecked
+dashcoffee | Quezon City | n11971110121 | unchecked
+Deja Brew by Brisbane Street Cafe | Caloocan | n12842140517 | unchecked
+DOZ Bread & Coffee | Quezon City | n10996590090 | unchecked; osm check_date 2023-06-22
+Driftwood Coffee | Quezon City | n6612576057 | unchecked
+Ezpresso | Manila | n10752404505 | unchecked
+Family Bean Garden Cafe | Caloocan | n11365165249 | unchecked
+Fika Café & Lounge | Pasig | n11330148663 | unchecked
+Finale Cafe | Manila | n2127121147 | unchecked
+Freshbrew Cafe | Quezon City | n13462222173 | unchecked
+Gedli Coffee | Quezon City | n10913648465 | unchecked
+Gold Cup | Parañaque | n13473056488 | unchecked
+Good 'ol Coffee | Quezon City | n10973967705 | unchecked; osm check_date 2023-04-29
+Good Ol' Coffee | Quezon City | n10855552714 | unchecked; osm check_date 2023-04-29
+GRÜN Cafe | Muntinlupa | n13676985061 | unchecked
+Hana Coffee | Manila | n13666240836 | unchecked; osm check_date 2026-03-21
+Haven’s Brew Leveriza | Pasay | n13677628979 | unchecked; osm check_date 2026-03-25
+Heavens Brew | Manila | n11993667240 | unchecked
+Hebrew Cafe | Quezon City | n1297007923 | unchecked
+Homie's Cafe | Quezon City | n11778206072 | unchecked
+Isabel's Coffee House | Quezon City | n11005348034 | unchecked; osm check_date 2023-06-22
+Kaffe Kaffe | Quezon City | n1732605889 | unchecked
+Kaffee de Krema | Quezon City | n2528403104 | unchecked
+Kaffeinated | Manila | n10177472417 | unchecked
+Kaldi Coffee | Manila | n13476023180 | unchecked
+Kape 'Tol Cafe | Manila | n13277937020 | unchecked
+Kape Aroma | Marikina | n4391527490 | unchecked
+Kape Barato | Manila | n9991876803 | unchecked
+Kape Etc. | Caloocan | n9830199030 | unchecked
+Kape Isla | Makati | n2159712155 | unchecked
+Kape Light | Manila | n13124737767 | unchecked
+Kape Ni Bossing | Manila | n11994944749 | unchecked
+Kape sa Kagubatan | Muntinlupa | n9764088797 | unchecked
+Kape Urban | Mandaluyong | n10166923466 | unchecked
+Kape't Bahay | Quezon City | n12231236601 | unchecked
+KAPEpito's | Manila | n11747109908 | unchecked
+Kiyusi Coffee | Quezon City | n13787280975 | unchecked
+KKOPI | Quezon City | n10046227689 | unchecked; osm check_date 2022-09-23
+Kona Coffee |  | n13270934133 | unchecked
+Larcy's | Pasig | n3614234332 | unchecked
+Laya Coffee | Quezon City | n9574037599 | unchecked; osm check_date 2023-04-29
+Laya Coffee | Quezon City | n10855548419 | unchecked; osm check_date 2023-04-29
+Liyah Kaffea | Manila | n3074540270 | unchecked
+Loraine's Coffee and Pastry Shop | Pasig | n5625015481 | unchecked
+Madbrews | Manila | n3598009757 | unchecked
+Madbrews | Manila | n13283333754 | unchecked
+Manobrew Coffee | Caloocan | n10264756661 | unchecked
+Mattys | Las Piñas | n7866991816 | unchecked
+Mon Kape Tako | Mandaluyong | n13989262087 | unchecked
+Mood Coffee | Manila | n11733705498 | unchecked; osm check_date 2024-03-15
+Nita Coffee Bar | Quezon City | n14072727738 | unchecked
+Noah's Corner | Quezon City | n12737061777 | unchecked
+O'Kafe | Marikina | n12678060785 | unchecked; osm check_date 2025-03-19
+OnaBrew | Quezon City | n9514690274 | unchecked
+Presko Coffee | Parañaque | n12367727581 | unchecked; osm check_date 2024-11-23
+Prodigy | Quezon City | n13311263549 | unchecked
+Puff & Dough | Quezon City | n12862022533 | unchecked
+Razzle Brew | Manila | n13475995568 | unchecked
+Recession Coffee | Quezon City | n4702983391 | unchecked
+Red Cup | Quezon City | n11533957903 | unchecked
+Relax & Brew | Marikina | n10915219174 | unchecked
+Reset Café | Mandaluyong | n10239860912 | unchecked; osm check_date 2024-02-29
+Ruah Coffer | Parañaque | n9991703368 | unchecked
+SheilZ Coffee | Pasig | n13919977853 | unchecked
+St. Gerald's Coffee Shop | Pasig | n10720525305 | unchecked; osm check_date 2023-03-08
+Stay up | Pasig | n10673067328 | unchecked; osm check_date 2023-02-17
+Sweetbread Cafe | Quezon City | n11946390826 | unchecked
+T&C Thread and Coffee | Makati | n6147388172 | unchecked
+Take O Coffee | Pasay | n12183459618 | unchecked
+The Black Box Coffee | Quezon City | n1836429164 | unchecked
+The Black Box Coffee | Quezon City | n13000870864 | unchecked
+The Brewed Buddies | Manila | n11754890493 | unchecked
+The Coffee Hub | Quezon City | n10855529358 | unchecked; osm check_date 2023-04-29
+The Coffee Room | Quezon City | n4313792591 | unchecked
+The Coffee Way | Quezon City | n3573548105 | unchecked
+The Cold Brew | Mandaluyong | n13986149303 | unchecked
+The Gram Coffee | Mandaluyong | n10099988517 | unchecked
+The Kapetan | Pasay | n12183459625 | unchecked
+The Lazy Cat | Makati | n13469837233 | unchecked
+Tia Bebs | Valenzuela | n11530504578 | unchecked; osm check_date 2024-03-23
+UDA COFFEE | Parañaque | n13907216702 | unchecked
+United Coffee | Pasig | n4838668987 | unchecked
+Vanilla Bakery and Cafe | Quezon City | n3661058051 | unchecked
+Warehouse Coffee | Manila | n13125014734 | unchecked
+Wespresso | Makati | n13442909019 | unchecked
+What About Coffee? | Quezon City | n11555491056 | unchecked; osm check_date 2024-01-27
+What About Coffee? | Quezon City | n12794513373 | unchecked; osm check_date 2025-10-06
+Wicked Coffee | Quezon City | n13721973176 | unchecked
+WouldULike | Mandaluyong | n13576800018 | unchecked
+Xpreszo Ph | Quezon City | n13578439655 | unchecked
+Yani Café | Pasig | n10196122994 | unchecked; osm check_date 2025-06-14
+Yviana | Quezon City | n10958564423 | unchecked
+Zach's Coffee | Quezon City | n10203023402 | unchecked
+Zeus coffee | Pasig | n13997544402 | unchecked
+
+## INCLUDED in data/indie_osm.psv
+The Northern Coffee Experience | Quezon City | n4670362393
+The Northern Coffee Experience | Quezon City | n6130332285
+Coffee Tonya | Makati | n9776257231
+Asterisko Artisan Coffee | Manila | n10752383710
+Coffee Supply Co. | Las Piñas | n10826249723
+Degree C | Mandaluyong | n11534210700
+a. m. espresso | San Juan | n11750288450
+Beanhi | Marikina | n11875616436
+KUBO Coffee | Mandaluyong | n13810152234
+dropthebean | Makati | w1502845856

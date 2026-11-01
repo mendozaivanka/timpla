@@ -1,0 +1,11 @@
+osm_filter,count_nwr_in_metro_manila,queried,source,licence
+coworking_space_or_office=coworking,20,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+tourism=hotel,592,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+building=apartments,3578,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+office=* (excl coworking),3816,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+amenity=university|college,424,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+railway=station,106,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+shop=mall,265,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+amenity=cafe,2044,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+shop=coffee,42,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL
+building=office|commercial,3370,2026-10-21,https://overpass-api.de/api/interpreter (area name=Metro Manila admin_level=3),ODbL

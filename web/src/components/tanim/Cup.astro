@@ -1,0 +1,17 @@
+---
+/** A flat cartoon cup: thick outline, flat top, round bottom, coffee level = `fill` (over 1 spills). The empty part shows the page. */
+type Props = { fill: number; label: string; scale?: number; class?: string };
+const { fill, label, scale = 1, class: cls = "" } = Astro.props;
+const s = scale, W = 64 * s, H = 64 * s, id = `cup-${Math.random().toString(36).slice(2, 8)}`;
+const body = `M${10 * s} ${14 * s} H${46 * s} V${40 * s} A${14 * s} ${14 * s} 0 0 1 ${32 * s} ${54 * s} H${24 * s} A${14 * s} ${14 * s} 0 0 1 ${10 * s} ${40 * s} Z`;
+const level = Math.min(Math.max(fill, 0), 1), top = 14 * s + (54 * s - 14 * s) * (1 - level);
+---
+
+<svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} class={`block overflow-visible ${cls}`}>
+  <defs><clipPath id={id}><path d={body}></path></clipPath></defs>
+  {fill > 0 && <path d={`M${22 * s} ${9 * s} c ${-3 * s} ${-3 * s} ${3 * s} ${-5 * s} 0 ${-8 * s} M${34 * s} ${9 * s} c ${-3 * s} ${-3 * s} ${3 * s} ${-5 * s} 0 ${-8 * s}`} fill="none" stroke="var(--foreground)" stroke-width={2.2 * s} stroke-linecap="round" opacity=".5"></path>}
+  {level > 0.02 && <rect x={10 * s} y={top} width={36 * s} height={54 * s - top} fill="var(--primary-strong)" clip-path={`url(#${id})`}></rect>}
+  <path d={body} fill="none" stroke="var(--foreground)" stroke-width={3 * s} stroke-linejoin="round"></path>
+  <path d={`M${46 * s} ${22 * s} h${6 * s} a${8 * s} ${8 * s} 0 0 1 0 ${16 * s} h${-6 * s}`} fill="none" stroke="var(--foreground)" stroke-width={3 * s} stroke-linejoin="round"></path>
+  {fill > 1 && <path d={`M${46 * s} ${14 * s} c ${4 * s} ${6 * s} ${4 * s} ${12 * s} ${2 * s} ${18 * s}`} fill="none" stroke="var(--primary-strong)" stroke-width={3 * s} stroke-linecap="round"></path>}
+</svg>

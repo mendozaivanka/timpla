@@ -1,0 +1,132 @@
+---
+import TimplaLayout from "@/components/timpla/TimplaLayout.astro";
+import DotMap from "@/components/timpla/DotMap.astro";
+import Receipt from "@/components/timpla/Receipt.astro";
+import { getShops } from "@/lib/data";
+import { instagramUrl, shortBeans, TIER_TEXT, whereOf, type Shop } from "@/lib/timpla";
+
+export async function getStaticPaths() {
+  const shops = await getShops();
+  return shops.map((shop, i) => ({ params: { slug: shop.slug }, props: { shop, no: i + 1 } }));
+}
+const { shop, no } = Astro.props as { shop: Shop; no: number };
+const ig = shop.instagram ? instagramUrl(shop.instagram) : null;
+// "Spot.ph", "Spot.ph · 2", … when an outlet wrote more than once
+const seen: Record<string, number> = {};
+const sources = shop.sources.map((s) => {
+  seen[s.outlet] = (seen[s.outlet] ?? 0) + 1;
+  return { ...s, label: seen[s.outlet] > 1 ? `${s.outlet} · ${seen[s.outlet]}` : s.outlet };
+});
+const mapped = shop.branches.filter((b) => b.lat != null);
+const signal = (s: string) => {
+  const [kind, ...rest] = s.split(":");
+  const value = rest.join(":").trim();
+  return { kind: kind.trim(), value, isUrl: /^https?:\/\//.test(value) };
+};
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  name: shop.name,
+  sameAs: [shop.website && (/^https?:/.test(shop.website) ? shop.website : `https://${shop.website}`), ig?.url].filter(Boolean),
+  location: shop.branches.map((b) => ({
+    "@type": "Place",
+    name: b.name || shop.name,
+    address: [b.address, b.city, "Metro Manila"].filter(Boolean).join(", "),
+    ...(b.lat != null ? { geo: { "@type": "GeoCoordinates", latitude: b.lat, longitude: b.lon } } : {}),
+  })),
+};
+---
+
+<TimplaLayout title={shop.name} current="cafes" description={`${shop.name}: specialty coffee in ${whereOf(shop.branches[0])}. ${shop.branches.length} branch(es), sources cited.`}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <a href="/timpla/cafes/" class="mt-8 inline-flex min-h-11 items-center text-sm font-medium text-muted-foreground hover:text-foreground">← All cafés</a>
+  <div class="flex flex-wrap items-start gap-10 pt-2">
+    <div class="flex-[1_1_320px] max-w-md">
+      <Receipt no={no} name={shop.name} where={whereOf(shop.branches[0])} since={shop.since} beans={shortBeans(shop.beans)} tier={shop.tier} large />
+    </div>
+    <div class="flex flex-[2_1_420px] flex-col gap-8">
+      <div>
+        <span class="label-mono">{shop.type || "café"}{shop.ownership === "foreign brand" ? " · foreign brand" : ""}</span>
+        <h1 class="mt-1 font-heading text-[clamp(2.25rem,6vw,3.25rem)] leading-tight font-normal">{shop.name}</h1>
+        <p class="mt-2 flex items-center gap-2 text-muted-foreground">
+          <span class="tier-dot" data-tier={shop.tier}></span>
+          <span><span class="font-semibold text-foreground capitalize">{shop.tier}</span>: {TIER_TEXT[shop.tier]}</span>
+        </p>
+      </div>
+
+      <section aria-labelledby="branches">
+        <h2 id="branches" class="label-mono mb-2">{shop.branches.length === 1 ? "Location" : `${shop.branches.length} branches`}</h2>
+        <ul class="m-0 grid list-none gap-2 p-0">
+          {
+            shop.branches.map((b) => (
+              <li class="rounded-xl border border-border bg-card px-4 py-3">
+                <span class="block font-medium">{b.name || whereOf(b)}</span>
+                <span class="block text-sm text-muted-foreground">{b.address || whereOf(b)}</span>
+                {b.lat == null && <span class="mt-1 block font-mono text-xs text-muted-foreground">location not yet verified, not on the map</span>}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section aria-labelledby="why">
+        <h2 id="why" class="label-mono mb-2">Why it's here</h2>
+        <dl class="m-0 grid gap-3 text-[15px]">
+          {shop.beans && <div><dt class="font-semibold">Beans</dt><dd class="m-0 text-muted-foreground">{shop.beans}</dd></div>}
+          {shop.specialty && <div><dt class="font-semibold">Specialty evidence</dt><dd class="m-0 text-muted-foreground">{shop.specialty}</dd></div>}
+          {shop.status && <div><dt class="font-semibold">Open in 2025–26</dt><dd class="m-0 break-words text-muted-foreground">{shop.status}</dd></div>}
+        </dl>
+      </section>
+
+      {
+        sources.length > 0 && (
+          <section aria-labelledby="press">
+            <h2 id="press" class="label-mono mb-2">Written about by</h2>
+            <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+              {sources.map((s) => (
+                <li>
+                  <a href={s.url} rel="noopener" target="_blank" class="inline-flex min-h-9 items-center rounded-full border border-border bg-card px-3 text-sm hover:bg-muted">
+                    {s.label} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      {
+        shop.signals.length > 0 && (
+          <section aria-labelledby="community">
+            <h2 id="community" class="label-mono mb-2">Community signals</h2>
+            <ul class="m-0 grid list-none gap-1 p-0 text-sm text-muted-foreground">
+              {shop.signals.map((s) => {
+                const x = signal(s);
+                return (
+                  <li>
+                    <span class="font-medium text-foreground">{x.kind}</span>:{" "}
+                    {x.isUrl ? <a class="underline underline-offset-4" href={x.value} rel="noopener" target="_blank">{x.value.replace(/^https?:\/\/(www\.)?/, "").slice(0, 60)}</a> : x.value}
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )
+      }
+
+      <div class="flex flex-wrap gap-2">
+        {shop.website && <a href={/^https?:/.test(shop.website) ? shop.website : `https://${shop.website}`} rel="noopener" target="_blank" class="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-4 text-sm font-medium">Website ↗</a>}
+        {ig && <a href={ig.url} rel="noopener" target="_blank" class="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-4 text-sm font-medium">@{ig.handle} ↗</a>}
+        {mapped.length > 0 && <a href="/timpla/map/" class="inline-flex min-h-11 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground">See it on the map</a>}
+      </div>
+    </div>
+    {
+      mapped.length > 0 && (
+        <figure class="m-0 w-full max-w-[220px] flex-none">
+          <DotMap highlight={shop.slug} label={`Map of Metro Manila highlighting ${shop.name}'s ${mapped.length === 1 ? "location" : `${mapped.length} branches`}`} />
+          <figcaption class="mt-1 text-xs text-muted-foreground">{shop.name} among Metro Manila's specialty cafés</figcaption>
+        </figure>
+      )
+    }
+  </div>
+</TimplaLayout>

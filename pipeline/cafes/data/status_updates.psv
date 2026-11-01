@@ -1,0 +1,64 @@
+name|branch_name|status_2026|status_evidence
+Kuppa Roastery & Cafe|BGC Commercenter|unclear|Searched for 2025 mentions and closure news: only Burpple 2012-14 and undated Wanderlog; OSM node has no check_date: https://www.openstreetmap.org/node/1669881500
+Hineleban Cafe|Arnaiz Ave|unclear|hineleban.com now redirects to a parked '/lander' page (lapsed domain, not closure by itself); web search found no 2025-26 mention or closure report (checked 2026-10-21): https://hineleban.com/
+Magnum Opus Fine Coffees|BF Homes|unclear|Searched general + PH press domains: newest editorial mentions 2018-2019 (Spot.ph); OSM node no check_date; no closure report (checked 2026-10-21): https://www.openstreetmap.org/node/3730125456
+Local Edition Coffee & Tea|Legazpi Village|unclear|Searched: only Foursquare/Burpple 2014 and undated Wanderlog; OSM node no check_date; no 2025-26 editorial or closure: https://www.openstreetmap.org/node/1689432633
+Kapetolyo by SGD Coffee|Bonifacio Shrine|unclear|Searched 'Kapetolyo' 2025/2026: only 2021 opening coverage (GMA/ABS-CBN); no closure report found: https://gmanetwork.com/news/lifestyle/food/758020/manila-opens-kapetolyo-a-new-cafe-at-bonifacio-shrine-on-international-coffee-day/story
+Sibs Coffee Roasters|Poblacion/Rockwell edge|open|Own Shopify store with active ordering and same-day pick-up at 306-A GFS Bldg Barangka Drive Mandaluyong; products updated Oct 2026 (fetched 2026-10-21): https://sibscoffeeroasters.com/pages/contact
+Epic Coffee Roastery|Kapitolyo|unclear|Searched twice: only older listings (Inquirer, Says, Burpple 2013); OSM node no check_date; no closure report: https://www.openstreetmap.org/node/3355763193
+Key Coffee Kissaten|Mitsukoshi BGC|open|Key Coffee press release on 3rd PH brand shop (Glorietta) names 'KEY COFFEE MITSUKOSHI BGC' as PH store no.1 and covers staff training across all three (2026-06-18): https://digitalpr.jp/r/137061
+YDG Coffee|Mandala Park|unclear|Plain Sight Coffee's own site (c)2026 lists its location as Mandala Park Shaw Blvd (same spot); no YDG 2025-26 mention or closure notice found (fetched 2026-10-21): https://plainsight.coffee/pages/location
+Common Folk Coffee Bar|Katipunan|unclear|commonfolk.ph (c)2025 shows only 'Launching Soon' placeholder; OSM has a 'Common Folk' at Capitol Hills Drive QC (no check_date); no 2025-26 editorial found: https://commonfolk.ph/
+Prominent Coffee|Banawe|unclear|prominentmnl.com DNS dead (lapsed domain is not closure); search found only an undated review naming Prominent among Banawe specialty spots: https://wanderlog.com/place/details/10837315
+Escolta Coffee Company|Escolta|open|Named among roasters at Coffee Plz! Festival, The Corner House San Juan (2025-07-17): https://coverstory.ph/2025/07/17/local-roasteries-and-global-brews-converge-in-coffee-plz-festival/
+Blocleaf Cafe|Malate|unclear|Searched 2025: only 2017-2022 coverage (Garage 2017, Tatler 2022); no closure report: https://www.tatlerasia.com/dining/journeys/bike-friendly-cafes-metro-manila
+MA+D Manila|Diliman|unclear|OSM node (Matahimik St) without check_date; no 2025-26 editorial found (checked 2026-10-21): https://www.openstreetmap.org/node/8366928603
+Morning Mud Cafe|UP Diliman|unclear|Searched 'Morning Mud' UP Diliman: no results at all (not in UP campus food lists): https://iskomunidad.upd.edu.ph/index.php/Food_Establishments_on_Campus
+West Town Coffee|Century City|unclear|westtowncoffee.com unreachable (lapsed domain is not closure); search found only an undated GMA list and no closure report: https://www.gmanetwork.com/entertainment/showbiznews/7-coffee-shops-in-makati-perfect-for-chilling/53509
+Cappo Coffee|unknown|unclear|Searched name + Manila: no hits (only the Tatler 2026 name mention already in dataset): n/a
+Lay-By Coffee|Marikina|unclear|Newest source Tatler bike-friendly cafes (2022-09-26); Marikina 2025 search found nothing: https://www.tatlerasia.com/dining/journeys/bike-friendly-cafes-metro-manila
+Localhost Coffee|Marikina|unclear|Only Inquirer 'new coffee shops' (undated, c.2022) at 18 A. Guisama St; search snippets referenced 2026 Instagram activity but Instagram not used as evidence (checked 2026-10-21): https://lifestyle.inquirer.net/105985/new-coffee-shops-on-our-radar/
+Trails and Traces Coffee Roasters|Marikina|open|OSM node check_date 2025-03-12 (2025-03-12): https://www.openstreetmap.org/node/12654195361
+Izu Koffee|Las Pinas|unclear|Newest editorial is Crown Asia guide (2022-12-27, JEE Village Center BF Resort); nothing 2025-26: https://crownasia.com.ph/?p=10699
+Curious Coffee Co.|BF Homes|open|Klikit guide 'Where to Get Great Coffee and Get Work Done in Manila (2025)' lists Curious Coffee BF Homes as a work-friendly cafe (2025): https://klikit.io/?p=66900 ; OSM check_date 2024-11-23 (Aguirre Ave point)
+The Alex Coffee|BF Homes|unclear|Not individually web-searched (budget); BF Homes 2025 search returned nothing on it; OSM 'Alex Coffee' check_date 2023-11-23 (too old): https://www.openstreetmap.org/node/10603911723
+Cuppa Coffee|BF International|unclear|Not individually web-searched (budget); OSM node without check_date; newest editorial Spot.ph 2023: https://www.openstreetmap.org/node/7866991819
+No Name Cafe|BF International|unclear|Not individually web-searched (budget); OSM node without check_date; newest editorial Spot.ph 2023: https://www.openstreetmap.org/node/12466361709
+Granville|San Juan|unclear|Only Tatler bike-friendly cafes (2022-09-26); nothing newer found: https://www.tatlerasia.com/dining/journeys/bike-friendly-cafes-metro-manila
+Bikes & Coffee Manila|BGC|unclear|Newest dated source Tatler (2022-09-26); GMA COVID-era article (Uptown Parade); OSM node without check_date: https://www.tatlerasia.com/dining/journeys/bike-friendly-cafes-metro-manila
+Luna Specialty Coffee|BGC NAC Tower|unclear|Not individually web-searched (budget); OSM node (32nd St) without check_date; last editorial 2019: https://www.openstreetmap.org/node/3254806290
+Bluesmith Coffee & Kitchen|Magallanes|open|OSM node 'Bluesmith' check_date 2025-10-07 (same point as row coords; branch label 'Magallanes' may not match this point) (2025-10-07): https://www.openstreetmap.org/node/9785557116
+Firefly Coffee|Banawe|unclear|fireflycoffee.ph serves only a bot-check/parking redirect (403); search found only sgpgrid directory (founded 2017, Sto. Domingo Ave); no 2025-26 source: https://sgpgrid.com/company/firefly-coffee-ID0000
+Group & Boiler Coffee Co.|Molito|unclear|Searched name + Alabang: no editorial hits beyond the 2021 Spot.ph source; OSM node (Madrigal Ave) without check_date: https://old.spot.ph/eatdrink/the-latest-eat-drink/73597/cafes-hanging-out-alabang-paranaque-a1808-20180501-lfrm
+Jiro Coffee Studio|Quezon City|unclear|Not individually web-searched (budget); only 2016 source; no OSM match: n/a
+Tenant Manila Shop & Cafe|San Antonio Village|unclear|Not individually web-searched (budget); only 2016 source; no OSM match: n/a
+Restock|San Antonio Village|unclear|restock.ph unreachable; Carta listing has only 2017 reviews incl. a temporary closure notice; OSM node no check_date; no 2025-26 source: https://carta.menu/restaurants/makati/restock
+Bean & Yolk|Poblacion|unclear|Not individually web-searched (budget); only 2016 source; no OSM match: n/a
+Fundamental Coffee|Park Terraces|unclear|Not individually web-searched (budget); only 2016 source; no OSM match: n/a
+And Then Co.|San Antonio|unclear|Not individually web-searched (budget); only 2018 source; no OSM match: n/a
+Hustle Cafe|Cubao|unclear|Not individually web-searched (budget); only 2018 source; OSM 'Bean Hustle' (check_date 2025-02-15) is a different cafe in Manila, not Cubao: n/a
+Cup Fiction|Katipunan|unclear|Searched Katipunan 2025 + name: no hits: n/a
+White Camp Coffee and Kitchen|Tomas Morato|unclear|Searched Tomas Morato 2025: only undated Wanderlog/Burpple; OSM node without check_date: https://wanderlog.com/place/details/4572678/white-camp-specialty-coffee--kitchen
+Twelve Labors|Karrivin|unclear|Searched 'Twelve Labors' + Karrivin: no hits; opening still unconfirmed: https://wanderlog.com/place/details/2105951/the-alley-at-karrivin
+Baristart Coffee|Greenhills|unclear|Only lead: Bossjob barista job posting (June 2025) naming Unit 331 V-Mall Greenhills - not an accepted evidence type; no editorial/own-site 2025-26 source: https://bossjob.com/en-us/job/barista-332528
+Baristart Coffee|BGC|unclear|Only Wanderlog listing for BGC High Street South (undated) and 2022 opening article; no 2025-26 source. NOTE row coords are the Greenhills OSM node (name match): https://www.theasianaffairs.com/the-first-store-of-the-japanese-coffee-shop-baristart-will-be-in-bgc/
+Omotesando Koffee|Power Plant Mall|unclear|No 2025-26 source for the Power Plant branch. NOTE: row coords come from OSM node on Valero St (Salcedo/Dowell Tower branch) which has check_date 2026-09-03 - that Salcedo branch is verified open; consider adding it as its own row: https://www.openstreetmap.org/node/14143802278
+Kazu Cafe|Makati|unclear|Not individually web-searched (budget); list-only source; no OSM match: n/a
+Cafe Aurora|Makati|unclear|Not individually web-searched (budget); list-only source; no OSM match: n/a
+Takao Studios Coffee|unknown|unclear|Searched: only location found is Tagaytay (rooftop of Cabins by Eco Hotel) - NOT in NCR; Tatler 2023 award listing; no Metro Manila branch found: https://www.tatlerasia.com/dining/takao-studios-coffee
+Curve Coffee|unknown|open|'Curve Coffee Collaborators' named at Coffee Plz! Festival (2025-07-17): https://coverstory.ph/2025/07/17/local-roasteries-and-global-brews-converge-in-coffee-plz-festival/ ; location still unknown
+Allo Coffee|unknown|unclear|Not individually searched; possible confusion with 'Ailo Coffee' (house-turned cafe, San Juan/BF Homes) named in a 2025 Klikit guide - same-name match not confirmed: https://klikit.io/?p=66900
+Current Coffee|unknown|unclear|Searched name + Manila: no hits: n/a
+High Peak Coffee|unknown|unclear|Searched name + Manila: no hits: n/a
+STAN Coffee Roasters|Quezon City|open|Own carrd site with post dated 2025-11-26; describes online retail and doorstep delivery (no physical cafe stated) (2025-11-26): https://stancoffeeroasters.carrd.co/
+Cafe Barrios (Ritual)|Arnaiz|unclear|Not individually web-searched (budget); only Sprudge 2015; no OSM match: n/a
+Vengo Neighborhood Cafe|Legazpi Village|unclear|Legazpi 2025 search surfaced only a 2019 GMA article (105 C. Palanca); no 2025-26 source: https://www.gmanetwork.com/entertainment/showbiznews/7-coffee-shops-in-makati-perfect-for-chilling/53509
+OTO|Poblacion|open|Tatler Best Philippines 2025 listing - serves speciality coffee by day, cocktails at night (2025): https://www.tatlerasia.com/dining/oto
+Subspace Coffee|Mandaluyong|unclear|Not individually web-searched (budget); only 2015 source; no OSM match: n/a
+Magdamag Market Cafe|South Triangle|open|OSM node 'Magdamag Market Café' Sgt. Esguerra Ave, check_date:opening_hours 2026-01-13 (2026-01-13): https://www.openstreetmap.org/node/11754618555
+Morse Coffee|Robinsons Magnolia|unclear|Not individually web-searched (budget); Nolisoli snippet only; no OSM match: n/a
+Crew Cafe (Episodes)|Teachers Village|unclear|Only Inquirer 'new coffee shops' (undated, 54 Matimtiman St); no 2025-26 source: https://lifestyle.inquirer.net/105985/new-coffee-shops-on-our-radar/
+Pedal Coffee|unknown|unclear|Not individually web-searched (budget); OSM 'Pedal Cafe' (Taguig) without check_date - name match unconfirmed: https://www.openstreetmap.org/node/12825139801
+Refinery|Rockwell|unclear|refinery.ph returns only a bot-check/parking redirect (403); OSM node (Joya Drive) without check_date; no 2025-26 source: https://www.openstreetmap.org/node/3148705745
+Koh Cafe + Roasters|Legazpi Village|unclear|Legazpi 2025 search found no mention; OSM node without check_date: https://www.openstreetmap.org/node/13043887553
+Tilde Hand Crafted Cafe|Rockwell area|unclear|Brand operating: own Shopify site (c)2026 says open Mon-Sat at #3 Brixton St Kapitolyo Pasig - i.e. relocated; no evidence the Makati location still operates (fetched 2026-10-21): https://tildebakery.com/

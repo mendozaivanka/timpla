@@ -1,0 +1,333 @@
+{
+ "retrievedAt": "2026-10-25",
+ "tables": {
+  "0072E4EVCP1.px": {
+   "folder": "2E/CS",
+   "title": "Non-Food and Industrial Crops: Volume of Production, by Region, Province, Quarter, and Semester, 2010-2026",
+   "updated": "2026-08-28T15:05:00"
+  },
+  "0092E4EAHM1.px": {
+   "folder": "2E/CS",
+   "title": "Non-Food and Industrial Crops: Area Planted/Harvested, by Region, Province, Quarter, and Semester, 2010-2026",
+   "updated": "2026-09-01T16:09:10"
+  },
+  "0122E4EBTM1.px": {
+   "folder": "2E/CS",
+   "title": "Non-Food and Industrial Crops: Number of Bearing Trees/Hills/Vines, by Region, Province, Quarter, and Semester, 2010-2026",
+   "updated": "2026-08-28T15:06:11"
+  },
+  "0032M4AFN08.px": {
+   "folder": "2M/NFG",
+   "title": "Commercial Crops: Farmgate Prices by Commodity, Region and Province, Monthly, 2010-2026",
+   "updated": "2026-08-28T14:43:36"
+  },
+  "0062B5ESUA5.px": {
+   "folder": "2B/AA/SU",
+   "title": "Commercial Crops: Supply Utilization Accounts",
+   "updated": "2026-08-05T09:20:30"
+  },
+  "0022E5ESSR0.px": {
+   "folder": "2B/AA/AFIS",
+   "title": "Self-Sufficiency Ratio (SSR) of Selected Agriculture and Fishery Commodities, by Commodity and Year: 1988 to 2025",
+   "updated": "2026-08-14T13:23:44"
+  },
+  "0032E5EIDR0.px": {
+   "folder": "2B/AA/AFIS",
+   "title": "Import Dependency Ratio (IDR) of Selected Agriculture and Fishery Commodities",
+   "updated": "2026-08-05T09:17:30"
+  },
+  "0012B5EVOP1.px": {
+   "folder": "2B/AA/VP/NA",
+   "title": "Value of Production in Philippine Agriculture and Fisheries",
+   "updated": "2026-09-14T15:14:00"
+  },
+  "0012M4ACP22.px": {
+   "folder": "2M/PI/CPI/2018NEW",
+   "title": "Consumer Price Index for All Income Households by Commodity Group (2018=100): January 2018 - September 2026",
+   "updated": "2026-10-06T09:22:23"
+  },
+  "0071E3ATME0.px": {
+   "folder": "1E/IE",
+   "title": "Table 7. Total Annual Family Expenditure by Major Expenditure Group by Per Capita Income Decile and by Region, Province, and HUC: 2023",
+   "updated": "2026-08-03T09:38:08"
+  },
+  "0012L4DMFD4.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2025",
+   "updated": "2026-06-25T13:55:11"
+  },
+  "0022L4DMFD3.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2024",
+   "updated": "2026-06-25T13:53:18"
+  },
+  "0032L4DMFD2.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2023",
+   "updated": "2026-06-25T13:51:58"
+  },
+  "0042L4DMFD1.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2022",
+   "updated": "2026-06-25T13:50:30"
+  },
+  "0052L4DMFD0.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin,2021",
+   "updated": "2026-06-25T13:48:37"
+  },
+  "0062L4DMFC9.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin,2020",
+   "updated": "2026-06-25T13:45:01"
+  },
+  "0072L4DMFC8.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2019",
+   "updated": "2026-06-25T13:43:36"
+  },
+  "0082L4DMFC7.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2018",
+   "updated": "2026-06-25T13:42:01"
+  },
+  "0092L4DMFC6.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2017",
+   "updated": "2026-06-25T13:40:29"
+  },
+  "0102L4DMFC5.px": {
+   "folder": "2L/IMT/AVI",
+   "title": "Annual Value of Philippine Imports by Commodity and Country of Origin, 2016",
+   "updated": "2026-06-25T13:38:49"
+  }
+ },
+ "checks": [
+  {
+   "check": "production 2024: regions sum to national",
+   "national": 31979.26,
+   "regions": 31979.27,
+   "ok": true
+  },
+  {
+   "check": "production 2025: regions sum to national",
+   "national": 35645.64,
+   "regions": 35645.65,
+   "ok": true
+  },
+  {
+   "check": "area 2024: regions sum to national",
+   "national": 115778.58,
+   "regions": 115778.58,
+   "ok": true
+  },
+  {
+   "check": "area 2025: regions sum to national",
+   "national": 124982.58,
+   "regions": 124982.58,
+   "ok": true
+  },
+  {
+   "check": "trees 2024: regions sum to national",
+   "national": 79403825.0,
+   "regions": 79403825.0,
+   "ok": true
+  },
+  {
+   "check": "trees 2025: regions sum to national",
+   "national": 84839827.33,
+   "regions": 84839827.33,
+   "ok": true
+  }
+ ],
+ "boundaries": {
+  "source": "faeldon/philippines-json-maps 2023, provdists lowres",
+  "licence": "MIT",
+  "psgc": "2023-12-31",
+  "features": 88
+ },
+ "nationalSeries": {
+  "sua": {
+   "table": "0062B5ESUA5.px",
+   "items": {
+    "1990": {},
+    "1991": {},
+    "1992": {},
+    "1993": {},
+    "1994": {},
+    "1995": {},
+    "1996": {},
+    "1997": {},
+    "1998": {},
+    "1999": {},
+    "2000": {},
+    "2001": {},
+    "2002": {},
+    "2003": {},
+    "2004": {},
+    "2005": {},
+    "2006": {},
+    "2007": {},
+    "2008": {},
+    "2009": {},
+    "2010": {},
+    "2011": {},
+    "2012": {},
+    "2013": {},
+    "2014": {},
+    "2015": {},
+    "2016": {},
+    "2017": {},
+    "2018": {},
+    "2019": {},
+    "2020": {},
+    "2021": {},
+    "2022": {}
+   }
+  },
+  "ssr": {
+   "table": "0022E5ESSR0.px",
+   "years": {
+    "1988": 122.4,
+    "1989": 116.4,
+    "1990": 107.7,
+    "1991": 104.2,
+    "1992": 101.3,
+    "1993": 100.8,
+    "1994": 104.0,
+    "1995": 102.3,
+    "1996": 100.4,
+    "1997": 98.1,
+    "1998": 90.1,
+    "1999": 95.7,
+    "2000": 89.6,
+    "2001": 93.7,
+    "2002": 81.9,
+    "2003": 81.1,
+    "2004": 84.2,
+    "2005": 67.8,
+    "2006": 84.9,
+    "2007": 55.2,
+    "2008": 60.1,
+    "2009": 52.5,
+    "2010": 54.7,
+    "2011": 54.9,
+    "2012": 45.2,
+    "2013": 46.8,
+    "2014": 71.9,
+    "2015": 33.0,
+    "2016": 31.9,
+    "2017": 44.3,
+    "2018": 42.2,
+    "2019": 46.1,
+    "2020": 39.6,
+    "2021": 44.4,
+    "2022": 38.1,
+    "2023": 38.7,
+    "2024": 38.6,
+    "2025": 47.4
+   }
+  },
+  "idr": {
+   "table": "0032E5EIDR0.px",
+   "years": {
+    "1990": null,
+    "1991": null,
+    "1992": 0.0,
+    "1993": 0.0,
+    "1994": 0.0,
+    "1995": 0.0,
+    "1996": null,
+    "1997": 2.4,
+    "1998": 10.5,
+    "1999": 4.5,
+    "2000": 10.6,
+    "2001": 6.4,
+    "2002": 18.1,
+    "2003": 19.1,
+    "2004": 16.0,
+    "2005": 32.3,
+    "2006": 15.4,
+    "2007": 44.9,
+    "2008": 40.0,
+    "2009": 47.5,
+    "2010": 45.3,
+    "2011": 45.1,
+    "2012": 54.8,
+    "2013": 53.4,
+    "2014": 28.1,
+    "2015": 67.0,
+    "2016": 68.1,
+    "2017": 55.7,
+    "2018": 57.8,
+    "2019": 53.9,
+    "2020": 60.4,
+    "2021": 55.6,
+    "2022": 61.9
+   }
+  },
+  "valueOfProduction": {
+   "table": "0012B5EVOP1.px",
+   "millionPesos": {
+    "current": {
+     "2000": 2326.12,
+     "2001": 1926.23,
+     "2002": 1936.71,
+     "2003": 2401.71,
+     "2004": 2395.64,
+     "2005": 2800.67,
+     "2006": 2972.57,
+     "2007": 3297.57,
+     "2008": 3730.38,
+     "2009": 3353.36,
+     "2010": 3338.78,
+     "2011": 3714.43,
+     "2012": 3693.52,
+     "2013": 3357.05,
+     "2014": 3471.33,
+     "2015": 3573.24,
+     "2016": 3428.98,
+     "2017": 3478.93,
+     "2018": 3279.67,
+     "2019": 3034.29,
+     "2020": 2921.68,
+     "2021": 2958.25,
+     "2022": 3368.5,
+     "2023": 4312.53,
+     "2024": 6097.4,
+     "2025": 11081.56,
+     "2026": null
+    },
+    "constant2018": {
+     "2000": 5854.47,
+     "2001": 6125.96,
+     "2002": 5841.09,
+     "2003": 5800.95,
+     "2004": 5607.17,
+     "2005": 5784.01,
+     "2006": 5686.61,
+     "2007": 5349.24,
+     "2008": 5324.52,
+     "2009": 5268.56,
+     "2010": 5163.74,
+     "2011": 4832.15,
+     "2012": 4859.99,
+     "2013": 4301.47,
+     "2014": 4128.33,
+     "2015": 3946.78,
+     "2016": 3751.98,
+     "2017": 3382.11,
+     "2018": 3279.67,
+     "2019": 3256.81,
+     "2020": 3286.91,
+     "2021": 3295.03,
+     "2022": 3252.41,
+     "2023": 3261.06,
+     "2024": 3486.67,
+     "2025": 3886.3,
+     "2026": null
+    }
+   }
+  }
+ }
+}

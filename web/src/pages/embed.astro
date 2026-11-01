@@ -1,0 +1,42 @@
+---
+/**
+ * The Timpla map alone, for embedding in an iframe (the portfolio's home page shows it). No header or filters;
+ * links open in the parent window. Not meant to be visited directly, so it's kept out of search results.
+ */
+import "@/styles/global.css";
+import CafeMap from "@/components/timpla/CafeMap";
+import { getIndependents, getOsmLayer, getPoints } from "@/lib/data";
+import { evidenceText, outLink } from "@/lib/timpla";
+
+const [points, unverified, independents] = await Promise.all([getPoints(), getOsmLayer(), getIndependents()]);
+const mapPoints = points.map(({ slug, name, branch, tier, city, nb, lon, lat, beans, since }) => ({ slug, name, branch, tier, city, nb, lon, lat, beans, since }));
+const others = independents.map((c) => {
+  const link = outLink(c);
+  return { name: c.name, cls: c.cls, city: c.city, lon: c.lon, lat: c.lat, n: c.n, evidence: evidenceText(c.ev, c.evd), href: link.href, linkLabel: link.label };
+});
+---
+
+<!doctype html>
+<html lang="en" data-palette="kape">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Timpla map</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL("/timpla/map/", Astro.site ?? Astro.url)} />
+    <!-- Links inside the map (a café's receipt, its website) open in the full window, not inside the frame -->
+    <base target="_top" />
+    <script is:inline>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (_) {}
+    </script>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; }
+    </style>
+  </head>
+  <body class="bg-background">
+    <CafeMap client:load embed points={mapPoints as any} others={others as any} unverified={unverified as any} />
+  </body>
+</html>

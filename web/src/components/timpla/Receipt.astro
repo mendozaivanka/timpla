@@ -1,0 +1,32 @@
+---
+// A café as a thermal receipt. Used for the featured cards and as the shop page masthead.
+type Props = { no: number; name: string; where: string; since: string; beans: string; tier: string; href?: string; large?: boolean };
+const { no, name, where, since, beans, tier, href, large = false } = Astro.props;
+const Tag = href ? "a" : "div";
+const rows = [
+  ["WHERE", where],
+  ["SINCE", since || "unknown"],
+  ["BEANS", beans || "not stated"],
+  ["TIER", tier],
+];
+---
+
+<Tag href={href} class="receipt-shadow block outline-none focus-visible:ring-3 focus-visible:ring-ring/50">
+  <div class:list={["receipt rounded-t-md px-5 pt-5 font-mono leading-relaxed", large ? "text-[13px]" : "text-[12.5px]"]}>
+    <div class="text-center text-[11px] tracking-[0.2em] [color:var(--paper-muted)]">TIMPLA · NO. {String(no).padStart(3, "0")}</div>
+    <div class:list={["my-2 text-center font-heading leading-tight", large ? "text-3xl" : "text-[22px]"]}>{name}</div>
+    <div class="receipt-rule"></div>
+    <dl class="m-0 my-2 grid gap-0.5">
+      {
+        rows.map(([k, v]) => (
+          <div class="flex justify-between gap-3">
+            <dt class="[color:var(--paper-muted)]">{k}</dt>
+            <dd class="m-0 line-clamp-2 text-right">{v}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    <div class="receipt-rule"></div>
+    <div class="mt-2 flex justify-between font-medium"><span>TOTAL</span><span>1 GOOD CUP</span></div>
+  </div>
+</Tag>

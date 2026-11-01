@@ -1,0 +1,69 @@
+---
+import { getTanimMeta, getTanimNational, getTanimProvinces } from "@/lib/data";
+import { fmt, provinceSentences, saying } from "@/lib/tanim";
+
+const [meta, nat, provinces] = await Promise.all([getTanimMeta(), getTanimNational(), getTanimProvinces()]);
+const y = meta.latestYear; const total = nat.production.all[y] ?? 0;
+const sk = provinces.find((p) => p.name === "Sultan Kudarat")!;
+const t = sk.production.all[y] ?? 0, prev = sk.production.all[String(Number(y) - 1)] ?? null;
+const sentences = provinceSentences(sk.name, y, t, total, prev);
+const rows: [string, string, string, string, string][] = [
+  ["Coffee by province", "PSA OpenSTAT, Crops Production Survey (0072E4EVCP1, 0092E4EAHM1, 0122E4EBTM1)", "tonnes, hectares, bearing trees, by variety, 2010 on", "attribute PSA", "quarterly; the annual figure settles in August"],
+  ["Farmgate prices", "PSA OpenSTAT (0032M4AFN08)", "PHP per kg by province and variety, yearly averages", "attribute PSA", "monthly"],
+  ["Supply and use, ratios", "PSA OpenSTAT, Supply Utilization Accounts (0062B5ESUA5), SSR (0022E5ESSR0), IDR (0032E5EIDR0)", "national, 1988 on", "attribute PSA", "yearly, lagged"],
+  ["Value of production", "PSA OpenSTAT (0012B5EVOP1)", "million pesos, current and constant 2018 prices, 2000 on", "attribute PSA", "quarterly"],
+  ["The price of a cup", "PSA OpenSTAT, CPI 2018 = 100 (0012M4ACP22), coffee and coffee substitutes", "index by province, monthly, yearly averages shown", "attribute PSA", "monthly"],
+  ["Spending on coffee", "PSA, Family Income and Expenditure Survey 2023 (0071E3ATME0)", "share of family expenditure by province and income decile", "attribute PSA", "every three years"],
+  ["Imports by origin", "PSA OpenSTAT, International Merchandise Trade (one table per year)", "CIF value and weight per tariff line and country, 2016 on", "attribute PSA", "yearly, mid-year"],
+  ["Reported facts", "news, LGU posts, DA regional offices, competitions", "a sentence, a link, a date", "cited per line", "when found"],
+  ["Province outlines", "faeldon/philippines-json-maps 2023", "82 provinces plus districts, PSGC 2023", "MIT", "when PSGC changes"],
+];
+---
+
+  <section id="beans" class="grid gap-10">
+    <header>
+      <span class="label-mono">Beans and Shipped in</span>
+      <h2 class="mt-1 font-heading text-[clamp(2rem,5vw,2.75rem)] leading-tight font-normal text-balance">Every number in the coffee chapters is one of <em class="text-primary-strong italic">two kinds</em>.</h2>
+      <p class="mt-3 text-muted-foreground">Counted by the Philippine Statistics Authority, or reported by someone else with a link beside it. This page shows which is which, how each sentence is written, and where every series comes from. Data retrieved {meta.retrievedAt}; built {meta.builtAt}.</p>
+    </header>
+
+    <section class="grid gap-4">
+      <h3 class="font-heading text-3xl font-normal">Which is which</h3>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div class="receipt-shadow"><div class="receipt rounded-t-md px-5 pt-4 font-mono text-[12px] leading-relaxed">
+          <div class="text-center text-[10px] tracking-[0.2em] [color:var(--paper-muted)]">TANIM · KIND 1</div>
+          <div class="my-2 text-center font-heading text-[22px]">Counted</div><div class="receipt-rule"></div>
+          <dl class="m-0 my-2 grid gap-0.5">{[["WHO", "Philippine Statistics Authority"], ["HOW", "Crops Production Survey; price monitoring; customs records"], ["WHERE", "province, region, country"], ["WHEN", "every year, " + meta.years[0] + "–" + y], ["MARGIN", "none published"]].map(([k, v]) => <div class="flex justify-between gap-3"><dt class="[color:var(--paper-muted)]">{k}</dt><dd class="m-0 text-right">{v}</dd></div>)}</dl>
+          <div class="receipt-rule"></div><div class="mt-2 flex justify-between font-medium"><span>ON THE MAP</span><span>filled</span></div>
+        </div></div>
+        <div class="receipt-shadow"><div class="receipt rounded-t-md px-5 pt-4 font-mono text-[12px] leading-relaxed">
+          <div class="text-center text-[10px] tracking-[0.2em] [color:var(--paper-muted)]">TANIM · KIND 2</div>
+          <div class="my-2 text-center font-heading text-[22px]">Reported</div><div class="receipt-rule"></div>
+          <dl class="m-0 my-2 grid gap-0.5">{[["WHO", "news, LGUs, DA offices, competitions"], ["HOW", "copied with its link and date"], ["WHERE", "a town or a farm, when PSA has none"], ["ADDED TO KIND 1", "never"], ["CHECKED", "only that the link still opens"]].map(([k, v]) => <div class="flex justify-between gap-3"><dt class="[color:var(--paper-muted)]">{k}</dt><dd class="m-0 text-right">{v}</dd></div>)}</dl>
+          <div class="receipt-rule"></div><div class="mt-2 flex justify-between font-medium"><span>ON THE MAP</span><span>not drawn</span></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="grid gap-4">
+      <h3 class="font-heading text-3xl font-normal">How a province sentence is built</h3>
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        <span class="rounded-lg bg-rosas-5 px-2.5 py-1.5 font-mono text-[12.5px] text-card">province, {y} · {fmt(t)} t</span><span class="text-muted-foreground">÷</span>
+        <span class="rounded-lg bg-rosas-5 px-2.5 py-1.5 font-mono text-[12.5px] text-card">country, {y} · {fmt(total)} t</span><span class="text-muted-foreground">→</span>
+        <span class="rounded-lg bg-primary px-2.5 py-1.5 font-mono text-[12.5px] text-primary-foreground">{(t / total).toFixed(2)}</span><span class="text-muted-foreground">→ nearest saying</span>
+        <span class="rounded-lg border border-border px-2.5 py-1.5 font-mono text-[12.5px]">{saying(t / total, "en")}</span>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <div class="rounded-xl border border-border bg-card p-4 text-[15px]"><span class="label-mono">Filipino, written first</span><p class="mt-1.5 mb-0">{sentences.fil}</p></div>
+        <div class="rounded-xl border border-border bg-card p-4 text-[15px]"><span class="label-mono">English</span><p class="mt-1.5 mb-0">{sentences.en}</p></div>
+      </div>
+      <p class="text-[15px] text-muted-foreground">Three rules: a share becomes the nearest saying people use (a tenth, a fifth, a quarter, a third, half, or "n in every 100"); a change is a change when PSA's number moved, because there is no published margin to compare it with, and the sentence says it is a survey count; the Filipino line is written first and the English follows it.</p>
+    </section>
+
+    <section class="grid gap-4">
+      <h3 class="font-heading text-3xl font-normal">Where each ingredient comes from</h3>
+      <div class="overflow-x-auto"><table class="w-full border-collapse text-left text-[14px]"><thead><tr class="border-b border-border text-muted-foreground"><th class="py-2 pr-3 font-medium">What</th><th class="pr-3 font-medium">From</th><th class="pr-3 font-medium">What we take</th><th class="pr-3 font-medium">Licence</th><th class="font-medium">Changes</th></tr></thead>
+        <tbody>{rows.map((r) => <tr class="border-b border-border/60 align-top">{r.map((c) => <td class="py-2 pr-3">{c}</td>)}</tr>)}</tbody></table></div>
+      <p class="text-[14px] text-muted-foreground">Timpla is free and carries no advertising. Tables are found by title and codes by label at fetch time, so a re-issued PSA table does not break the build; the fetch date and each table's PSA "updated" stamp ship with every build. Build checks: {meta.checks.map((c) => c.check + " (" + (c.ok ? "ok" : "mismatch") + ")").join("; ")}.</p>
+    </section>
+  </section>
