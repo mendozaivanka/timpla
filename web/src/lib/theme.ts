@@ -2,7 +2,7 @@ export type ThemeMode = "light" | "dark" | "system";
 
 const STORAGE_KEY = "theme";
 const EVENT = "themechange";
-const THEME_BG = { light: "#f2f4f6", dark: "#10151b" } as const;
+const THEME_BG = { light: "#fbf6f7", dark: "#171014" } as const;
 
 const systemQuery = () => window.matchMedia("(prefers-color-scheme: dark)");
 
